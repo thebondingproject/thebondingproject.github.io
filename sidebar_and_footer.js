@@ -27,6 +27,7 @@ document.write('\
 					<h2>Get in touch</h2>\
 				</header>\
 				<ul class="contact">\
+					<li class="icon solid fa-envelope">devs.thebondingproject(at)gmail.com</li>\
 					<li class="icon solid fa-envelope">danelutti.massimo(at)spes.uniud.it</li>\
 					<li class="icon solid fa-envelope">minigher.claudio(at)spes.uniud.it</li>\
 					<li class="icon solid fa-envelope">sanson.luca(at)spes.uniud.it</li>\
