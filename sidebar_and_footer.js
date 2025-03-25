@@ -12,6 +12,7 @@ document.write('\
 				<ul>\
 					<li><a href="index.html">Homepage</a></li>\
 					<li><a href="project_overview.html">Project overview</a></li>\
+					<li><a href="software_architecture.html">Software architecture</a></li>\
 					<li><a href="mechanical_description.html">Mechanical description</a></li>\
 					<li><a href="ultrasonic_driver.html">Ultrasonic driver</a></li>\
 					<li><a href="heating_stage.html">Heating stage</a></li>\
