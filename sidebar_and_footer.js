@@ -12,7 +12,6 @@ document.write('\
 				<ul>\
 					<li><a href="index.html">Homepage</a></li>\
 					<li><a href="project_overview.html">Project Overview</a></li>\
-					<li><a href="wedge_bond_procedure.html">The Wedge Bond Procedure</a></li>\
 					<li>\
 						<span class="opener">Development Pages</span>\
 						<ul>\
