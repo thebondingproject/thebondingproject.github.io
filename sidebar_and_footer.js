@@ -12,7 +12,7 @@ document.write('\
 				<ul>\
 					<li><a href="index.html">Homepage</a></li>\
 					<li><a href="project_overview.html">Project overview</a></li>\
-					<li><a href="software_architecture.html">Software architecture</a></li>\
+					<li><a href="system_architecture.html">System architecture</a></li>\
 					<li><a href="mechanical_description.html">Mechanical description</a></li>\
 					<li><a href="ultrasonic_driver.html">Ultrasonic driver</a></li>\
 					<li><a href="heating_stage.html">Heating stage</a></li>\
@@ -21,7 +21,8 @@ document.write('\
 					<li>\
 						<span class="opener">Development Pages</span>\
 						<ul>\
-        					<li><a href="page_template.html">Page Template</a></li>\
+        					<li><a href="page_template_basic.html">Basic page template</a></li>\
+        					<li><a href="page_template.html">Page template</a></li>\
         					<li><a href="elements.html">Elements</a></li>\
 						</ul>\
 					</li>\
