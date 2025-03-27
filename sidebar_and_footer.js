@@ -18,6 +18,7 @@ document.write('\
 					<li><a href="heating_stage.html">Heating stage</a></li>\
 					<li><a href="motor_control.html">Motor control</a></li>\
 					<li><a href="camera_and_optics.html">Camera and optics</a></li>\
+					<li><a href="downloads.html">Downloads</a></li>\
 					<li>\
 						<span class="opener">Development Pages</span>\
 						<ul>\
