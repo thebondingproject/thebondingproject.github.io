@@ -8,7 +8,7 @@
 	<head>
 		<title>The Bonding Project</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
 	<body class="is-preload">
@@ -30,13 +30,16 @@
 								</header>
 
 								<h2>Introduction</h2>
-								<h4>Original frame</h4>
+								<h4>The original frame</h4>
 								<p>
 									As it was reported in an image in the <a href="project_overview.html#the_machine">project overview</a>, the original bonding machine is essentially a bulky 4-axis robot. It's composed of two main elements:
 									<ul>
 										<li>The heated bed: it allows for horizontal movement of along the X and Y axes;</li>
 										<li>The machine head: it's mounted at a fixed height, but its internals can move vertically along Z and can also rotate along θ.</li>
 									</ul>
+								</p>
+								<h4>Rebuild challenges</h4>
+								<p>
 									We needed build a frame to allow movement along the four axis with micrometer precision. This immediately raises three problems:
 									<ul>
 										<li>How can we achieve micrometer precision while keeping costs sufficiently down?</li>
@@ -45,22 +48,31 @@
 									</ul>
 								</p>
 
-								<h4>Current state</h4>
+								<h2>The new frame</h2>
+								<h4>Overview</h4>
 							    <p>
-								<span class="image right"><img src="images/mechanical_description/machine_head_scaled.jpg" alt=""/></span>
-								The current state of the machine frame is depicted in the image on the side. The frame which supports the machine head was built from scratch, together with the motor mounts, the travel limiting sensors and the encoders’ mounts. 
-								<strong>[TODO]: qua è da riscrivere, l'ho lasciato com'era originariamente</strong>
-								</p>
-
-								<hr class="major" />
-
-								<h2>X, Y, Z, θ axes detail</h2>
+								The current state of the machine frame is depicted in the images below.
+								The frame which supports the machine head was built from scratch, together with the motor mounts, the travel limiting sensors and the encoders’ mounts.
+								The latter are discussed in detail in the <a href="motor_control.html">motor control</a> page.  
 								<div class="box alt">
-									<div class="row gtr-50 gtr-uniform">
-										<div class="col-5"><span class="image fit"><img src="images/motor_control/XY_encoder.jpg" alt="" /></span></div>
-										<div class="col-5"><span class="image fit"><img src="images/motor_control/z_theta_encoder.jpg" alt="" /></span></div>
+									<div class="row aln-center">
+										<div class="col-6"><span class="image fit"><img src="images/mechanical_description/frame_front_view.jpg" alt="" /></span></div>
+										<div class="col-6"><span class="image fit"><img src="images/mechanical_description/frame_top_view.jpg" alt="" /></span></div>
 									</div>
 								</div>
+								</p>
+
+								<h4>X, Y, Z, θ axes in detail</h4>
+								<p>
+								The images below show the X, Y, Z, θ axes in greater detail.
+								As you can see from the image on the left, the hot bed is moved through a screw mechanism which translates the rotational movement of the servo motors into linear motion.
+								<div class="box alt">
+									<div class="row aln-center">
+										<div class="col-6"><span class="image fit"><img src="images/mechanical_description/XY_encoder.jpg" alt="" /></span></div>
+										<div class="col-6"><span class="image fit"><img src="images/mechanical_description/z_theta_encoder.jpg" alt="" /></span></div>
+									</div>
+								</div>
+								</p>
 
 							</section>
 						</div>
@@ -71,11 +83,6 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
+		<script src="js_scripts.js"></script>
 	</body>
 </html>

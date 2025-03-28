@@ -8,7 +8,7 @@
 	<head>
 		<title>The Bonding Project</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
 	<body class="is-preload">
@@ -31,29 +31,39 @@
 								<h2>Introduction</h2>
 								
 								<h4>The first step in the rebuild</h4>
-								<p>The ultrasonic driver was the first thing built as we needed to check if the machine head was working at all. As we have already seen in the <a href="project_overview.html#wire_bonding">project overview</a>, the ultrasonic element is a highly specialized part that has a fundamental role in the wedge bonding procedure. It would’ve made no sense to proceed further in the rebuild if this element was broken. </p>
+								<p>The ultrasonic driver control board was the first thing built as we needed to check if the machine head was working at all. As we have already seen in the <a href="project_overview.html#wire_bonding">project overview</a>, the ultrasonic element is a highly specialized part that has a fundamental role in the wedge bonding procedure. It would’ve made no sense to proceed further in the rebuild if this element was broken. </p>
 
 								<h4>Modeling ultrasonic drivers</h4>
 								<p>
-									<span class="image left"><img src="images/ultrasonic_driver/ultrasonic_driver_scheme.jpg" alt=""/></span>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce fringilla enim lorem, ut ultricies mi dapibus fermentum. Fusce vulputate leo lacinia ligula dapibus sagittis. Nam nulla sapien, varius vitae mauris id, vehicula vehicula orci. Duis sodales mauris vitae orci bibendum, sed tincidunt enim tristique. Nam accumsan elit ac ex consectetur pellentesque. Suspendisse potenti. In non malesuada metus, non tempor odio. Morbi porta nisl et nibh laoreet, vitae sollicitudin elit interdum. Donec hendrerit gravida lorem id pharetra. Praesent a ex ex. 
+									Langevin ultrasonic transducers are composed of two piezoelectric disks held together with a bolt which prevents them from separating during operation.
+									Piezoelectric crystals vibrate when they get electrically stimulated by injecting a sine wave into their contacts. The frequency of the stimulating signal must be chosen carefully as ultrasonic transducers must be operated in proximity of their resonant frequency.
+									A negative feedback driver regulates the input frequency in order to always keep the ultrasonic transducer at the optimal working point. 
+									This is similar to what happens in quartz oscillators used to generate clock signals, as they also feature a negative feedback loop to keep the crystal in its inductive working region near its resonant frequency. 
+									
+									<div class="box alt">
+										<div class="row aln-center">
+											<div class="col-3"><span class="image fit"><img src="images/ultrasonic_driver/ultrasonic_driver_scheme.jpg" alt="" /></span></div>
+											<div class="col-3"><span class="image fit"><img src="images/ultrasonic_driver/meachanical_model.jpg" alt="" /></span></div>
+										</div>
+									</div>
+									
+									The mechanical elements which compose the Langevin ultrasonic transducer shown above can be modeled with the scheme on the left. This scheme resonates at frequency \(f_1\) which has the expression 
+									<br>
+									<div class="align-center">\(f_1 = \frac{1}{2 \pi} \sqrt{\frac{k}{M}} \)</div>
 								</p>
+
 
 								<hr class="major" />
 
 								<h2>Ultrasonic driver and wire feed details</h2>
 								<div class="box alt">
-									<div class="row gtr-50 gtr-uniform">
-										<div class="col-5"><span class="image fit"><img src="images/ultrasonic_driver/ultrasonic_tool_detail.jpg" alt="" /></span></div>
-										<div class="col-5"><span class="image fit"><img src="images/ultrasonic_driver/clamp_solenoid.jpg" alt="" /></span></div>
-										<div class="col-5"><span class="image fit"><img src="images/ultrasonic_driver/wire_tear_feed.jpg" alt="" /></span></div>
-										<div class="col-5"><span class="image fit"><img src="images/ultrasonic_driver/wire_clamp.jpg" alt="" /></span></div>
+									<div class="row aln-center">
+										<div class="col-6"><span class="image fit"><img src="images/ultrasonic_driver/ultrasonic_tool_detail.jpg" alt="" /></span></div>
+										<div class="col-6"><span class="image fit"><img src="images/ultrasonic_driver/clamp_solenoid.jpg" alt="" /></span></div>
+										<div class="col-6"><span class="image fit"><img src="images/ultrasonic_driver/wire_tear_feed.jpg" alt="" /></span></div>
+										<div class="col-6"><span class="image fit"><img src="images/ultrasonic_driver/wire_clamp.jpg" alt="" /></span></div>
 									</div>
 								</div>
-								
-								<hr class="major" />
-								<h4>Downloads</h4>
-								<a href="downloads.html#ultrasonic_driver"> blabla</a>
 							</section>
 						</div>
 					</div>
@@ -63,11 +73,5 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+		<script src="js_scripts.js"></script>	</body>
 </html>
