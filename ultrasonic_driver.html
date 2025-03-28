@@ -42,20 +42,73 @@
 									
 									<div class="box alt">
 										<div class="row aln-center">
-											<div class="col-3"><span class="image fit"><img src="images/ultrasonic_driver/ultrasonic_driver_scheme.jpg" alt="" /></span></div>
-											<div class="col-3"><span class="image fit"><img src="images/ultrasonic_driver/meachanical_model.jpg" alt="" /></span></div>
+											<div class="col-4"><span class="image fit"><img src="images/ultrasonic_driver/ultrasonic_driver_scheme.jpg" alt="" /></span></div>
+											<div class="col-4"><span class="image fit"><img src="images/ultrasonic_driver/meachanical_model.jpg" alt="" /></span></div>
 										</div>
 									</div>
 									
-									The mechanical elements which compose the Langevin ultrasonic transducer shown above can be modeled with the scheme on the left. This scheme resonates at frequency \(f_1\) which has the expression 
-									<br>
-									<div class="align-center">\(f_1 = \frac{1}{2 \pi} \sqrt{\frac{k}{M}} \)</div>
+									The mechanical elements which compose the Langevin ultrasonic transducer shown above can be modeled with the scheme on the left. This scheme resonates at frequency \(f_s\) which has the expression:
+									<div class="align-center">\(f_s = \frac{1}{2 \pi} \sqrt{\frac{k}{M}} \)</div>
+								</p>
+								<p>
+									We now plot the mechanical transfer function of the mechanical system shown above.
+									We also plot the electrical transfer function of the transducer (i.e. its electrical impedance), obtained by stimulating the piezo material with a sinusoidal wave and measuring the current.
+									The figure below shows that the two transfer functions are related, and that a the impedence has a valley in \(f_s\) and a peak in \(f_p\).
+									
+									<div class="box alt">
+										<div class="row aln-center">
+											<div class="col-6"><span class="image fit"><img src="images/ultrasonic_driver/mechanical_fdt.jpg" alt="" /></span></div>
+											<div class="col-6"><span class="image fit"><img src="images/ultrasonic_driver/electrical_fdt.jpg" alt="" /></span></div>
+										</div>
+									</div>
 								</p>
 
+								<p>	
+									<span class="image right"><img src="images/ultrasonic_driver/series_resonance_equivalent_model.jpg" alt=""/></span>
+									We want to drive our piezo at the \(f_s\) for mainly three reasons:
+									<ul>
+										<li>The voltage is proportional to developed force, and current is proportional to velocity: therefore, constant current excitation provides approximately constant vibration amplitude;</li>
+										<li>The electrical impedance is lower, and therefore a lower supply is needed to drive the circuit;</li>
+										<li>The oscillating voltage fed into the piezo is not required to be purely sinusoidal.</li>
+									</ul>
+									The piezo can be also driven at the \(f_p\) frequency, but the driving circuit is more complex. The main advantage of the parallel resonance is that the frequency of operation is significantly higher with respect to the series resonance. 
+									It can be seen that the mechanical system operating in series resonance can be modeled with an equivalent electrical circuit called the Butterworth Van-Dyke model.
+									This circuit is shown in the picture on the right. The \(C_p\) capacitor is a parasitic element that can be safely ignored.
+								</p>
+
+								<p>
+									Linking the mechanical model to the electrical one isn't easy, as it would require us to measure the various parameters of the ultrasonic transducer.
+									Fortunately we don't actually need to measure anything. We just need to increase the input frequency while measuring the current searching for the point at which the impedance becomes purely real, i.e. the point in which the current in the device is in phase with the voltage.
+									Note that in the electrical transfer function depicted above the phase is in fact zero when the frequency is \(f_s\).
+									Once the resonance has been reached, we just need to regulate the input voltage so that the phase remains zero by using a negative feedback. 
+									<br>
+									<br>
+									This can be done with a feedback loop like the one depicted in the figure below.
+									<div class="box alt">
+										<div class="row aln-center">
+											<div class="col-6"><span class="image fit"><img src="images/ultrasonic_driver/phase_regulator.jpg" alt="" /></span></div>
+										</div>
+									</div>
+								</p>
 
 								<hr class="major" />
 
+								<h2>Building the ultrasonic driver circuit</h2>
+								<h4>The schematic</h4>
+								<p>
+									<strong>[TODO] Da fare</strong>
+								</p>
+								
+								<hr class="major" />
 								<h2>Ultrasonic driver and wire feed details</h2>
+								We decided to report here the ultrasonic transducer and the other ancillary mechanisms required to perform wedge bonds.
+								For the complete bonding procedure, please refer to the dedicated section in the <a href="project_overview.html#wire_bonding">project overview</a>.
+								<ul>
+									<li><b>Top-left</b>: detail of the ultrasonic transducer and the vibrating horn mounted on the machine head;</li>
+									<li><b>Top-right</b>: the solenoids that control the wire tear/feed and clamp mechanisms;</li>
+									<li><b>Bottom-left</b>: the tear/feed mechanism;</li>
+									<li><b>Bottom-right</b>: the wire clamp meachanism.</li>
+								</ul>
 								<div class="box alt">
 									<div class="row aln-center">
 										<div class="col-6"><span class="image fit"><img src="images/ultrasonic_driver/ultrasonic_tool_detail.jpg" alt="" /></span></div>
