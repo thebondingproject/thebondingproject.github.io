@@ -29,16 +29,41 @@
 									<h1>Heating stage</h1>
 								</header>
 								
-								<h2>Titolo paragrafo</h2>
-								
-								<h4>Titolo sottoparagrafo</h4>
+								<h2>Introduction</h2>
+								<h4>Rationale</h4>
 								<p>
-									Contenut
-
+									The wedge-bonding procedure requires the chip to be placed on a heated bed as it was anticipated in the <a href="project_overview.html#wire_bonding">project overview</a>.
+									The heated bed needs to be at a temperature of 150° for the wedge-bonding procedure to be performed efficiently and correctly.
+								</p>
+								<h4>The thermal model</h4>
+								<p>
+									<span class="image right"><img src="images/heating_stage/thermal_model.gif" alt=""/></span>
+									It is well known that thermal systems can be modeled using electrical equivalents by following these rules:
+									<ul>
+										<li>Heat current is equivalent to electrical current;</li>
+										<li>Heat sources are equivalent to current generators;</li>
+										<li>Temperature is equivalent to voltage;</li>
+										<li>Ambient temperature is equivalent to electrical ground;</li>
+										<li>Heat conduction of materials is equivalent to resistance;</li>
+										<li>Heat capacity of materiasl is equivalent to electrical capacitance.</li>
+									</ul>
+									Therefore, the thermal model of a body connected to a heat source can be modeled as a RC network like the one depicted in the figure on the right.
+									
+									<stron>[TODO]Spiegare che possiamo arrivare a temperatura con un PWM (attualmente generato con 20V )</stron>
+								<hr class="major" />
+								<h2>Heating stage details</h2>
+								<p>
+									We report in the image cluster below the machine's rebuilt heating stage.
+									<ul>
+										<li><b>Top-left</b>: the mounting support for the SMD NTC temperature sensor;</li>
+										<li><b>Top-right</b>: the NTC and its support mounted on the underside of the heated bed;</li>
+										<li><b>Bottom-left</b>: the disassembled heated bed;</li>
+										<li><b>Bottom-right</b>: the assembled heated bed.</li>
+									</ul>
 									<div class="box alt">
 										<div class="row aln-center">
+											<div class="col-6"><span class="image fit"><img src="images/heating_stage/temperature_sensor_support.jpg" alt="" /></span></div>
 											<div class="col-6"><span class="image fit"><img src="images/heating_stage/temperature_sensor.jpg" alt="" /></span></div>
-											<div class="col-6"><span class="image fit"><img src="images/heating_stage/power_resistor.jpg" alt="" /></span></div>
 											<div class="col-6"><span class="image fit"><img src="images/heating_stage/opened_sandwich.jpeg" alt="" /></span></div>
 											<div class="col-6"><span class="image fit"><img src="images/heating_stage/closed_sandwich.jpeg" alt="" /></span></div>
 										</div>
