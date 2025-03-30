@@ -1,125 +1,152 @@
 <!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>The Bonding Project</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+<head>
+	<title>The Bonding Project</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
+<body class="is-preload">
 
-							<!-- Header -->
-							<script src="header.js"></script>
+	<!-- Wrapper -->
+	<div id="wrapper">
 
-							<!-- Content -->
-							<section>
-								<header class="main">
-									<h1>Mechanical description</h1>
-								</header>
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
 
-								<h2>Introduction</h2>
-								<h4>The original frame</h4>
-								<p>
-									As it was reported in an image in the <a href="project_overview.html#the_machine">project overview</a>, the original bonding machine is essentially a bulky 4-axis robot. It's composed of two main elements:
-									<ul>
-										<li>The heated bed: it allows for horizontal movement of along the X and Y axes;</li>
-										<li>The machine head: it's mounted at a fixed height, but its internals can move vertically along Z and can also rotate along θ.</li>
-									</ul>
-								</p>
-								<h4>Rebuild challenges</h4>
-								<p>
-									We needed build a frame to allow movement along the four axis with micrometer precision. This immediately raises three problems:
-									<ul>
-										<li>How can we achieve micrometer precision while keeping costs sufficiently down?</li>
-										<li>How do we stop the bed from smashing accidentally against the metal frame? How do we prevent over-rotation of the machine head?</li>
-										<li>How do we set the zeros of X, Y, Z and θ reliably?</li>
-									</ul>
-								</p>
+				<!-- Header -->
+				<script src="header.js"></script>
 
-								<hr class="major" />
-								
-								<h2>The new frame</h2>
-								<h4>Overview</h4>
-							    <p>
-								The current state of the machine frame is depicted in the images below.
-								The frame which supports the machine head was built from scratch, together with the motor mounts, the travel limiting sensors and the encoders’ mounts.
-								The latter are discussed in detail in the <a href="motor_control.html">motor control</a> page.
-								In the following section we will show the X, Y, Z, θ axes in greater detail, which use three different methods to achieve motion.
-								</p>
+				<!-- Content -->
+				<section>
+					<header class="main">
+						<h1>Mechanical description</h1>
+					</header>
 
-								<div class="box alt">
-									<div class="row aln-center">
-										<div class="col-6"><span class="image fit"><img src="images/mechanical_description/frame_front_view.jpg" alt="" /></span></div>
-										<div class="col-6"><span class="image fit"><img src="images/mechanical_description/frame_top_view.jpg" alt="" /></span></div>
-									</div>
-								</div>
-								
-								<h4>X, Y mechanism and limit switches</h4>
-								<p>
-								The image cluster below shows the X and Y axis mechanisms in greater detail.
-								<ul>
-									<li><b>Top-left</b>: the heated bed is moved through a screw mechanism which translates the rotational movement of the servo motors into linear motion.
-										The horizontal screw has a pitch of 0.75mm, meaning that for each revolution of the screw the heated bed moves horizontally by 0.75mm.
-										This allows for great horizontal precison, which will enable us to achieve the desidered micrometer precision that we need to perform the bonds;
-									</li>
-									<li><b>Top-right</b>: a detail of the X motor;</li>
-									<li><b>Bottom-left</b>: an animation of the screw mechanism to convert the rotational motion of the motor into linear horizontal motion;</li>
-									<li><b>Bottom-right</b>: detail of the mechanical limit switch of the X axis. These switch are normally open; when they get hit by the heated bed, they form a short which is dected by the machine's MCU, which in turn proceeds to immediately halt the motors.</li>
+					<h2>Introduction</h2>
+					<h4>The original frame</h4>
+					<p>
+						As it was reported in an image in the <a href="project_overview.html#the_machine">project
+							overview</a>, the original bonding machine is essentially a bulky 4-axis robot. It's
+						composed of two main elements:
+					<ul>
+						<li>The heated bed: it allows for horizontal movement of along the X and Y axes;</li>
+						<li>The machine head: it's mounted at a fixed height, but its internals can move vertically
+							along Z and can also rotate along θ.</li>
+					</ul>
+					</p>
+					<h4>Rebuild challenges</h4>
+					<p>
+						We needed build a frame to allow movement along the four axis with micrometer precision. This
+						immediately raises three problems:
+					<ul>
+						<li>How can we achieve micrometer precision while keeping costs sufficiently down?</li>
+						<li>How do we stop the bed from smashing accidentally against the metal frame? How do we prevent
+							over-rotation of the machine head?</li>
+						<li>How do we set the zeros of X, Y, Z and θ reliably?</li>
+					</ul>
+					</p>
 
-								</ul>
-								</p>
-								
-								<div class="box alt">
-									<div class="row aln-center">
-										<div class="col-6"><span class="image fit"><img src="images/mechanical_description/XY_encoder.jpg" alt="" /></span></div>
-										<div class="col-6"><span class="image fit"><img src="images/mechanical_description/screw_pitch.jpg" alt="" /></span></div>
-										<div class="col-6"><span class="image fit"><img src="images/mechanical_description/screw_mechanism.png" alt="" /></span></div>
-										<div class="col-6"><span class="image fit"><img src="images/mechanical_description/XY_limit_switch.jpg" alt="" /></span></div>
-									</div>
-								</div>
-								
+					<hr class="major" />
 
-								<h4>Z, θ mechanism and limit switches</h4>
-								<p>
-								The image cluster below shows the Z and θ axis mechanisms in greater detail.
-								<ul>
-									<li><b>Top-left</b>: the Z motor moves the machine head up and down using a slider-crank mechanism, while the θ rotates the operating head with a belt drive mechanism;</li>
-									<li><b>Top-right</b>: a detail of the Z and θ mechanisms. The belt drive of θ was not visibile in the top-left image;</li>
-									<li><b>Bottom-left</b>: an outline of a slider-crank mechanism;</li>
-									<li><b>Bottom-right</b>: highlight of the optical limit switches of the Z movement. The θ axis has optical limit switches as well, but they cannot be esily seen fron the outside and therefore they haven't been shown here. These switches are normally closed. When the light path gets interrupted by excessive travel or due to the gold bonding wire snapping accidentally, the machine gets immedately halted by the MCU.</li>
-								</ul>
-								</p>
-								<div class="box alt">
-									<div class="row aln-center">
-										<div class="col-6"><span class="image fit"><img src="images/mechanical_description/z_theta_encoder.jpg" alt="" /></span></div>
-										<div class="col-6"><span class="image fit"><img src="images/mechanical_description/Z_theta_detail.jpg" alt="" /></span></div>
-										<div class="col-6"><span class="image fit"><img src="images/mechanical_description/Model-of-slider-crank-mechanism.png" alt="" /></span></div>
-										<div class="col-6"><span class="image fit"><img src="images/mechanical_description/Z_limit_switches.jpg" alt="" /></span></div>
-										<div class="col-6"><span class="image fit"><img src="" alt="" /></span></div>
-									</div>
-								</div>
+					<h2>The new frame</h2>
+					<h4>Overview</h4>
+					<p>
+						The current state of the machine frame is depicted in the images below.
+						The frame which supports the machine head was built from scratch, together with the motor
+						mounts, the travel limiting sensors and the encoders’ mounts.
+						The latter are discussed in detail in the <a href="motor_control.html">motor control</a> page.
+						In the following section we will show the X, Y, Z, θ axes in greater detail, which use three
+						different methods to achieve motion.
+					</p>
 
-							</section>
+					<div class="box alt">
+						<div class="row aln-center">
+							<div class="col-6"><span class="image fit"><img
+										src="images/mechanical_description/frame_front_view.jpg" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="images/mechanical_description/frame_top_view.jpg" alt="" /></span></div>
 						</div>
 					</div>
 
-					<!-- Sidebar and Footer -->
-					<script src="sidebar_and_footer.js"></script>
-			</div>
+					<h4>X, Y mechanism and limit switches</h4>
+					<p>
+						The image cluster below shows the X and Y axis mechanisms in greater detail.
+					<ul>
+						<li><b>Top-left</b>: the heated bed is moved through a screw mechanism which translates the
+							rotational movement of the servo motors into linear motion.
+							The horizontal screw has a pitch of 0.75mm, meaning that for each revolution of the screw
+							the heated bed moves horizontally by 0.75mm.
+							This allows for great horizontal precison, which will enable us to achieve the desidered
+							micrometer precision that we need to perform the bonds;
+						</li>
+						<li><b>Top-right</b>: a detail of the X motor;</li>
+						<li><b>Bottom-left</b>: an animation of the screw mechanism to convert the rotational motion of
+							the motor into linear horizontal motion;</li>
+						<li><b>Bottom-right</b>: detail of the mechanical limit switch of the X axis. These switch are
+							normally open; when they get hit by the heated bed, they form a short which is dected by the
+							machine's MCU, which in turn proceeds to immediately halt the motors.</li>
 
-		<!-- Scripts -->
-		<script src="js_scripts.js"></script>
-	</body>
+					</ul>
+					</p>
+
+					<div class="box alt">
+						<div class="row aln-center">
+							<div class="col-6"><span class="image fit"><img
+										src="images/mechanical_description/XY_encoder.jpg" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="images/mechanical_description/screw_pitch.jpg" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="images/mechanical_description/screw_mechanism.png" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="images/mechanical_description/XY_limit_switch.jpg" alt="" /></span></div>
+						</div>
+					</div>
+
+
+					<h4>Z, θ mechanism and limit switches</h4>
+					<p>
+						The image cluster below shows the Z and θ axis mechanisms in greater detail.
+					<ul>
+						<li><b>Top-left</b>: the Z motor moves the machine head up and down using a slider-crank
+							mechanism, while the θ rotates the operating head with a belt drive mechanism;</li>
+						<li><b>Top-right</b>: a detail of the Z and θ mechanisms. The belt drive of θ was not visibile
+							in the top-left image;</li>
+						<li><b>Bottom-left</b>: an outline of a slider-crank mechanism;</li>
+						<li><b>Bottom-right</b>: highlight of the optical limit switches of the Z movement. The θ axis
+							has optical limit switches as well, but they cannot be esily seen fron the outside and
+							therefore they haven't been shown here. These switches are normally closed. When the light
+							path gets interrupted by excessive travel or due to the gold bonding wire snapping
+							accidentally, the machine gets immedately halted by the MCU.</li>
+					</ul>
+					</p>
+					<div class="box alt">
+						<div class="row aln-center">
+							<div class="col-6"><span class="image fit"><img
+										src="images/mechanical_description/z_theta_encoder.jpg" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="images/mechanical_description/Z_theta_detail.jpg" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="images/mechanical_description/Model-of-slider-crank-mechanism.png"
+										alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="images/mechanical_description/Z_limit_switches.jpg" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img src="" alt="" /></span></div>
+						</div>
+					</div>
+
+				</section>
+			</div>
+		</div>
+
+		<!-- Sidebar and Footer -->
+		<script src="sidebar_and_footer.js"></script>
+	</div>
+
+	<!-- Scripts -->
+	<script src="js_scripts.js"></script>
+</body>
+
 </html>

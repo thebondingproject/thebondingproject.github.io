@@ -1,153 +1,206 @@
 <!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>The Bonding Project</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+<head>
+	<title>The Bonding Project</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
+<body class="is-preload">
 
-							<!-- Header -->
-							<script src="header.js"></script>
+	<!-- Wrapper -->
+	<div id="wrapper">
 
-							<!-- Content -->
-							<section>
-								<header class="main">
-									<h1>Ultrasonic driver</h1>
-								</header>
-								<h2>Introduction</h2>
-								
-								<h4>The first step in the rebuild</h4>
-								<p>The ultrasonic driver control board was the first thing built as we needed to check if the machine head was working at all. As we have already seen in the <a href="project_overview.html#wire_bonding">project overview</a>, the ultrasonic element is a highly specialized part that has a fundamental role in the wedge bonding procedure. It would’ve made no sense to proceed further in the rebuild if this element was broken. </p>
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
 
-								<h4>Modeling ultrasonic drivers</h4>
-								<p>
-									Langevin ultrasonic transducers are composed of two piezoelectric disks held together with a bolt which prevents them from separating during operation.
-									Piezoelectric crystals vibrate when they get electrically stimulated by injecting a sine wave into their contacts. The frequency of the stimulating signal must be chosen carefully as ultrasonic transducers must be operated in proximity of their resonant frequency.
-									A negative feedback driver regulates the input frequency in order to always keep the ultrasonic transducer at the optimal working point. 
-									This is similar to what happens in quartz oscillators used to generate clock signals, as they also feature a negative feedback loop to keep the crystal in its inductive working region near its resonant frequency. 
-									
-									<div class="box alt">
-										<div class="row aln-center">
-											<div class="col-4"><span class="image fit"><img src="images/ultrasonic_driver/ultrasonic_driver_scheme.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/ultrasonic_driver/meachanical_model.jpg" alt="" /></span></div>
-										</div>
-									</div>
-									
-									The mechanical elements which compose the Langevin ultrasonic transducer shown above can be modeled with the scheme on the left. This scheme resonates at frequency \(f_s\) which has the expression:
-									<div class="align-center">\(f_s = \frac{1}{2 \pi} \sqrt{\frac{k}{M}} \)</div>
-								</p>
-								<p>
-									We now plot the mechanical transfer function of the mechanical system shown above.
-									We also plot the electrical transfer function of the transducer (i.e. its electrical impedance), obtained by stimulating the piezo material with a sinusoidal wave and measuring the current.
-									The figure below shows that the two transfer functions are related, and that a the impedence has a valley in \(f_s\) and a peak in \(f_p\).
-									
-									<div class="box alt">
-										<div class="row aln-center">
-											<div class="col-6"><span class="image fit"><img src="images/ultrasonic_driver/mechanical_fdt.jpg" alt="" /></span></div>
-											<div class="col-6"><span class="image fit"><img src="images/ultrasonic_driver/electrical_fdt.jpg" alt="" /></span></div>
-										</div>
-									</div>
-								</p>
+				<!-- Header -->
+				<script src="header.js"></script>
 
-								<p>	
-									<span class="image right"><img src="images/ultrasonic_driver/series_resonance_equivalent_model.jpg" alt=""/></span>
-									We want to drive our piezo at the \(f_s\) for mainly three reasons:
-									<ul>
-										<li>The voltage is proportional to developed force, and current is proportional to velocity: therefore, constant current excitation provides approximately constant vibration amplitude;</li>
-										<li>The electrical impedance is lower, and therefore a lower supply is needed to drive the circuit;</li>
-										<li>The oscillating voltage fed into the piezo is not required to be purely sinusoidal.</li>
-									</ul>
-									The piezo can be also driven at the \(f_p\) frequency, but the driving circuit is more complex. The main advantage of the parallel resonance is that the frequency of operation is significantly higher with respect to the series resonance. 
-									It can be seen that the mechanical system operating in series resonance can be modeled with an equivalent electrical circuit called the Butterworth Van-Dyke model.
-									This circuit is shown in the picture on the right. The \(C_p\) capacitor is a parasitic element that can be safely ignored.
-								</p>
+				<!-- Content -->
+				<section>
+					<header class="main">
+						<h1>Ultrasonic driver</h1>
+					</header>
+					<h2>Introduction</h2>
 
-								<p>
-									Linking the mechanical model to the electrical one isn't easy, as it would require us to measure the various parameters of the ultrasonic transducer.
-									Fortunately we don't actually need to measure anything. We just need to increase the input frequency while measuring the current searching for the point at which the impedance becomes purely real, i.e. the point in which the current in the device is in phase with the voltage.
-									Note that in the electrical transfer function depicted above the phase is in fact zero when the frequency is \(f_s\).
-									Once the resonance has been reached, we just need to regulate the input voltage so that the phase remains zero by using a negative feedback. 
-									<br>
-									<br>
-									This can be done with a feedback loop like the one depicted in the figure below.
-									<div class="box alt">
-										<div class="row aln-center">
-											<div class="col-8"><span class="image fit"><img src="images/ultrasonic_driver/phase_regulator.jpg" alt="" /></span></div>
-										</div>
-									</div>
-								</p>
+					<h4>The first step in the rebuild</h4>
+					<p>The ultrasonic driver control board was the first thing built as we needed to check if the
+						machine head was working at all. As we have already seen in the <a
+							href="project_overview.html#wire_bonding">project overview</a>, the ultrasonic element is a
+						highly specialized part that has a fundamental role in the wedge bonding procedure. It would’ve
+						made no sense to proceed further in the rebuild if this element was broken. </p>
 
-								<hr class="major" />
+					<h4>Modeling ultrasonic drivers</h4>
+					<p>
+						Langevin ultrasonic transducers are composed of two piezoelectric disks held together with a
+						bolt which prevents them from separating during operation.
+						Piezoelectric crystals vibrate when they get electrically stimulated by injecting a sine wave
+						into their contacts. The frequency of the stimulating signal must be chosen carefully as
+						ultrasonic transducers must be operated in proximity of their resonant frequency.
+						A negative feedback driver regulates the input frequency in order to always keep the ultrasonic
+						transducer at the optimal working point.
+						This is similar to what happens in quartz oscillators used to generate clock signals, as they
+						also feature a negative feedback loop to keep the crystal in its inductive working region near
+						its resonant frequency.
 
-								<h2>Building the ultrasonic driver circuit</h2>
-								<h4>The schematic</h4>
-								<p>	
-									The 
-									<a href="downloads.html#ultrasonic_driver_schematics"><span class="icon solid fa-file-image"> </span>schematic</a>
-									and the 
-									<a href="downloads.html#ultrasonic_driver_PCB"><span class="icon solid fa-file-image"> </span>PCB layout and 3D model</a>
-									can be found in the
-									<a href="downloads.html#ultrasonic_driver"></span>downloads area</a>
-									of this website.
-
-									<br><br>
-
-									The driver schematic is reported in the image below. The following observations can be made:
-									<ul>
-										<li>The transformer T1 matches the output impedance of the LM380 amplifier. The opamp has an output impedance of 8Ω, while the input impedance of the ultrasonic transducer is approximately 1700Ω;</li>
-										<li>The CD4046 PLL generates an output frequency that drives the ultrasonic transducer at the series resonance point;</li>
-										<li>The ultrasonic transducer produces a current with a variable amplitude. However, the CD4046 phase detector requires a signal with a fixed amplitude. To address this, the U3 comparator converts the transducer's variable amplitude signal into a constant amplitude signal, which is then sent to the SIGIN pin of the CD4046 PLL;</li>
-										<li>The PLL output signal is fed into a digital potentiometer (MCP41010), which can attenuate the amplitude of the signal that drives the ultrasonic driver. This allows us to regulate the strength of the bonding procedure;</li>
-										<li>The two peak detectors convert the sinusoidal voltage and current waves into DC voltages that can be sampled by an ADC;</li>
-										<li>When the current signal is high enough, the red LED turns on;</li>
-										<li>The ultrasonic transducer is driver with in-phase current, but the PLL requires a 90° out of phase signal in order to be stable (it operates with a 90° phase detector). The RC network dephases the Trans_feedback current by 180°-90°=90° so that the PLL locks correctly; </li>
-										<li>The LM380 amplifier (which provides the current to drive the ultrasonic transducer) is powered by a +18V rail generated by the on-board L7817CV voltage regulator;</li>
-										<li>The +18V regulator is in turn powered by a 20-24V which needs to be supplied from the outside;</li>
-										<li>The circuit also requires dual 5V power supply (i.e. +5V and -5V rails) to be supplied from the outside.</li>
-									</ul>
-									<span class="image fit"><img src="images/ultrasonic_driver/Schematic_Prints.png" alt="" /></span>
-								</p>
-								
-								<hr class="major" />
-								<h2>Ultrasonic driver and wire feed details</h2>
-								We decided to report here the ultrasonic transducer and the other ancillary mechanisms required to perform wedge bonds.
-								For the complete bonding procedure, please refer to the dedicated section in the <a href="project_overview.html#wire_bonding">project overview</a>.
-								<ul>
-									<li><b>Top-left</b>: detail of the ultrasonic transducer and the vibrating horn mounted on the machine head;</li>
-									<li><b>Top-right</b>: the solenoids that control the wire tear/feed and clamp mechanisms;</li>
-									<li><b>Bottom-left</b>: the tear/feed mechanism;</li>
-									<li><b>Bottom-right</b>: the wire clamp meachanism.</li>
-								</ul>
-								<div class="box alt">
-									<div class="row aln-center">
-										<div class="col-6"><span class="image fit"><img src="images/ultrasonic_driver/ultrasonic_tool_detail.jpg" alt="" /></span></div>
-										<div class="col-6"><span class="image fit"><img src="images/ultrasonic_driver/clamp_solenoid.jpg" alt="" /></span></div>
-										<div class="col-6"><span class="image fit"><img src="images/ultrasonic_driver/wire_tear_feed.jpg" alt="" /></span></div>
-										<div class="col-6"><span class="image fit"><img src="images/ultrasonic_driver/wire_clamp.jpg" alt="" /></span></div>
-									</div>
-								</div>
-							</section>
+					<div class="box alt">
+						<div class="row aln-center">
+							<div class="col-4"><span class="image fit"><img
+										src="images/ultrasonic_driver/ultrasonic_driver_scheme.jpg" alt="" /></span>
+							</div>
+							<div class="col-4"><span class="image fit"><img
+										src="images/ultrasonic_driver/meachanical_model.jpg" alt="" /></span></div>
 						</div>
 					</div>
 
-					<!-- Sidebar and Footer -->
-					<script src="sidebar_and_footer.js"></script>
-			</div>
+					The mechanical elements which compose the Langevin ultrasonic transducer shown above can be modeled
+					with the scheme on the left. This scheme resonates at frequency \(f_s\) which has the expression:
+					<div class="align-center">\(f_s = \frac{1}{2 \pi} \sqrt{\frac{k}{M}} \)</div>
+					</p>
+					<p>
+						We now plot the mechanical transfer function of the mechanical system shown above.
+						We also plot the electrical transfer function of the transducer (i.e. its electrical impedance),
+						obtained by stimulating the piezo material with a sinusoidal wave and measuring the current.
+						The figure below shows that the two transfer functions are related, and that a the impedence has
+						a valley in \(f_s\) and a peak in \(f_p\).
 
-		<!-- Scripts -->
-		<script src="js_scripts.js"></script>	</body>
+					<div class="box alt">
+						<div class="row aln-center">
+							<div class="col-6"><span class="image fit"><img
+										src="images/ultrasonic_driver/mechanical_fdt.jpg" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="images/ultrasonic_driver/electrical_fdt.jpg" alt="" /></span></div>
+						</div>
+					</div>
+					</p>
+
+					<p>
+						<span class="image right"><img
+								src="images/ultrasonic_driver/series_resonance_equivalent_model.jpg" alt="" /></span>
+						We want to drive our piezo at the \(f_s\) for mainly three reasons:
+					<ul>
+						<li>The voltage is proportional to developed force, and current is proportional to velocity:
+							therefore, constant current excitation provides approximately constant vibration amplitude;
+						</li>
+						<li>The electrical impedance is lower, and therefore a lower supply is needed to drive the
+							circuit;</li>
+						<li>The oscillating voltage fed into the piezo is not required to be purely sinusoidal.</li>
+					</ul>
+					The piezo can be also driven at the \(f_p\) frequency, but the driving circuit is more complex. The
+					main advantage of the parallel resonance is that the frequency of operation is significantly higher
+					with respect to the series resonance.
+					It can be seen that the mechanical system operating in series resonance can be modeled with an
+					equivalent electrical circuit called the Butterworth Van-Dyke model.
+					This circuit is shown in the picture on the right. The \(C_p\) capacitor is a parasitic element that
+					can be safely ignored.
+					</p>
+
+					<p>
+						Linking the mechanical model to the electrical one isn't easy, as it would require us to measure
+						the various parameters of the ultrasonic transducer.
+						Fortunately we don't actually need to measure anything. We just need to increase the input
+						frequency while measuring the current searching for the point at which the impedance becomes
+						purely real, i.e. the point in which the current in the device is in phase with the voltage.
+						Note that in the electrical transfer function depicted above the phase is in fact zero when the
+						frequency is \(f_s\).
+						Once the resonance has been reached, we just need to regulate the input voltage so that the
+						phase remains zero by using a negative feedback.
+						<br>
+						<br>
+						This can be done with a feedback loop like the one depicted in the figure below.
+					<div class="box alt">
+						<div class="row aln-center">
+							<div class="col-8"><span class="image fit"><img
+										src="images/ultrasonic_driver/phase_regulator.jpg" alt="" /></span></div>
+						</div>
+					</div>
+					</p>
+
+					<hr class="major" />
+
+					<h2>Building the ultrasonic driver circuit</h2>
+					<h4>The schematic</h4>
+					<p>
+						The
+						<a href="downloads.html#ultrasonic_driver_schematics"><span class="icon solid fa-file-image">
+							</span>schematic</a>
+						and the
+						<a href="downloads.html#ultrasonic_driver_PCB"><span class="icon solid fa-file-image">
+							</span>PCB layout and 3D model</a>
+						can be found in the
+						<a href="downloads.html#ultrasonic_driver"></span>downloads area</a>
+						of this website.
+
+						<br><br>
+
+						The driver schematic is reported in the image below. The following observations can be made:
+					<ul>
+						<li>The transformer T1 matches the output impedance of the LM380 amplifier. The opamp has an
+							output impedance of 8Ω, while the input impedance of the ultrasonic transducer is
+							approximately 1700Ω;</li>
+						<li>The CD4046 PLL generates an output frequency that drives the ultrasonic transducer at the
+							series resonance point;</li>
+						<li>The ultrasonic transducer produces a current with a variable amplitude. However, the CD4046
+							phase detector requires a signal with a fixed amplitude. To address this, the U3 comparator
+							converts the transducer's variable amplitude signal into a constant amplitude signal, which
+							is then sent to the SIGIN pin of the CD4046 PLL;</li>
+						<li>The PLL output signal is fed into a digital potentiometer (MCP41010), which can attenuate
+							the amplitude of the signal that drives the ultrasonic driver. This allows us to regulate
+							the strength of the bonding procedure;</li>
+						<li>The two peak detectors convert the sinusoidal voltage and current waves into DC voltages
+							that can be sampled by an ADC;</li>
+						<li>When the current signal is high enough, the red LED turns on;</li>
+						<li>The ultrasonic transducer is driver with in-phase current, but the PLL requires a 90° out of
+							phase signal in order to be stable (it operates with a 90° phase detector). The RC network
+							dephases the Trans_feedback current by 180°-90°=90° so that the PLL locks correctly; </li>
+						<li>The LM380 amplifier (which provides the current to drive the ultrasonic transducer) is
+							powered by a +18V rail generated by the on-board L7817CV voltage regulator;</li>
+						<li>The +18V regulator is in turn powered by a 20-24V which needs to be supplied from the
+							outside;</li>
+						<li>The circuit also requires dual 5V power supply (i.e. +5V and -5V rails) to be supplied from
+							the outside.</li>
+					</ul>
+					<span class="image fit"><img src="images/ultrasonic_driver/Schematic_Prints.png" alt="" /></span>
+					</p>
+
+					<hr class="major" />
+					<h2>Ultrasonic driver and wire feed details</h2>
+					We decided to report here the ultrasonic transducer and the other ancillary mechanisms required to
+					perform wedge bonds.
+					For the complete bonding procedure, please refer to the dedicated section in the <a
+						href="project_overview.html#wire_bonding">project overview</a>.
+					<ul>
+						<li><b>Top-left</b>: detail of the ultrasonic transducer and the vibrating horn mounted on the
+							machine head;</li>
+						<li><b>Top-right</b>: the solenoids that control the wire tear/feed and clamp mechanisms;</li>
+						<li><b>Bottom-left</b>: the tear/feed mechanism;</li>
+						<li><b>Bottom-right</b>: the wire clamp meachanism.</li>
+					</ul>
+					<div class="box alt">
+						<div class="row aln-center">
+							<div class="col-6"><span class="image fit"><img
+										src="images/ultrasonic_driver/ultrasonic_tool_detail.jpg" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="images/ultrasonic_driver/clamp_solenoid.jpg" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="images/ultrasonic_driver/wire_tear_feed.jpg" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="images/ultrasonic_driver/wire_clamp.jpg" alt="" /></span></div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<!-- Sidebar and Footer -->
+		<script src="sidebar_and_footer.js"></script>
+	</div>
+
+	<!-- Scripts -->
+	<script src="js_scripts.js"></script>
+</body>
+
 </html>
