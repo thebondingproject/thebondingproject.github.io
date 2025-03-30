@@ -37,23 +37,40 @@
 								</p>
 								<h4>The thermal model</h4>
 								<p>
-									<span class="image right"><img src="images/heating_stage/thermal_model.gif" alt=""/></span>
 									It is well known that thermal systems can be modeled using electrical equivalents by following these rules:
 									<ul>
 										<li>Heat current is equivalent to electrical current;</li>
-										<li>Heat sources are equivalent to current generators;</li>
 										<li>Temperature is equivalent to voltage;</li>
 										<li>Ambient temperature is equivalent to electrical ground;</li>
 										<li>Heat conduction of materials is equivalent to resistance;</li>
-										<li>Heat capacity of materiasl is equivalent to electrical capacitance.</li>
+										<li>Heat capacity of materials is equivalent to electrical capacitance.</li>
 									</ul>
-									Therefore, the thermal model of a body connected to a heat source can be modeled as a RC network like the one depicted in the figure on the right.
-									
-									<stron>[TODO]Spiegare che possiamo arrivare a temperatura con un PWM (attualmente generato con 20V )</stron>
+									Therefore, a body connected to a heat source can be modeled as a RC network like the one depicted in the figure in the paragraph below.
+								</p>
 								<hr class="major" />
-								<h2>Heating stage details</h2>
+
+								<h2>Driving the heating stage</h2>
+								<h4>Strategy</h4>
 								<p>
-									We report in the image cluster below the machine's rebuilt heating stage.
+									<span class="image right"><img src="images/heating_stage/thermal_model.gif" alt=""/></span>
+									By applying the previous observations, the machine's heated bed can be modeled as an RC network like the one in the figure on the right.
+									<ul>
+										<li>\(q_i\) is the power generator. In our application, \(q_i\) will be the electrical power \(V(t) \times I(t)\) dissipated by a power resistor, which will act as a heating element;</li>
+										<li>\(\theta_a\) is the ambient temperature;</li>
+										<li>\(\theta_r\) is the temperature of the heated bed. Note that, obviously, \(\theta_r > \theta_a\) when the heating circuit is powered up;</li>
+										<li>\(C_r\) is the heat capacity of the heated bed. This capacity has a significant magnitude, because the heated bed is essentially a fat disk of metal (see pictures down below);</li>
+										<li>\(R_{ra}\) is the heat thermal resistance of the heated bed. It discharges the heat capacity, allowing for the heated bed to cool down back to \(\theta_r = \theta_a\) when the power source is turned off.</li>									</ul>
+									</ul>
+									In order to reach the correct operating temperature, i.e. \(\theta_r=150°\), we will need a driver circuit which can:
+									<ul>
+										<li>Modulate the power source by switching it on and off at will;</li>
+										<li>Measure the temperature of the heated bed \(\theta_r\);</li>
+										<li>Regulate the temperature with a negative feedback loop.</li>
+									</ul>
+									The supply providing power to the heating element will be switched on and off through a MOSFET controlled by a PWM, while \(\theta_r\) will be measured using a NTC temperature sensor.
+								</p>
+								<p>
+									The heated bed, the heating element and the temperature sensors are shown in the image cluster below:s
 									<ul>
 										<li><b>Top-left</b>: the mounting support for the SMD NTC temperature sensor;</li>
 										<li><b>Top-right</b>: the NTC and its support mounted on the underside of the heated bed;</li>
@@ -69,7 +86,11 @@
 										</div>
 									</div>
 								</p>
-
+								
+								<h4>The driver</h4>
+								<p>
+									<strong>[TODO] Schematics e foto del driver. </strong>
+								</p>
 							</section>
 						</div>
 					</div>
