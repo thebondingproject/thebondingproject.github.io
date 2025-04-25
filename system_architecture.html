@@ -25,16 +25,86 @@
 						<h1>System architecture</h1>
 					</header>
 
-					<h2>Top view of the system</h2>
-
-					<h4>Titolo sottoparagrafo</h4>
-					<p>Contenuto</p>
+					<h2>Modular master/slave architecture</h2>
+					<p>We decided to implement a modular master/slave architecture to control the various elements of the machine. This allows us to separate the motor drivers from the rest of the control logic, as we want to recycle the motor drivers' design for other projects (for example, to build a CNC machine).
+					<h4>Master Control Unit</h4>
+						The Master Control Unit (MCU) is based on a STM32H723ZGT6 microcontroller and it's responsible of:
+						<ul>
+							<li>Controlling the slave motor boards;</li>
+							<li>Controlling the other active elements in the bonding procedure (wire feed/tear solenoids, temperature control, ultrasonic driver);</li>
+							<li>Calculating motor trajectories;</li>
+							<li>Managing the user interface (screen, joysticks and buttons).</li>
+						</ul>
+					</p>
+					<h4>Slave motor controllers</h4>
+					<p>
+						The four motor controllers are based on STM32F302R876 microcontrollers and they are responsible of:
+						<ul>
+							<li>Driving the motors through a PID controller, which simultaneously regulates position, speed and current;</li>
+							<li>Manage safety limit switches.</li>
+						</ul>
+					</p>
+					
+					<h4>Top view of the system</h4>
+					In the image below we report the the simplified block scheme of the complete architecture.
+					<span class="image fit"><img src="images/system_architecture/block_scheme.png" alt="" /></span>
 
 					<hr class="major" />
 
-					<h2>Top view of the system</h2>
-					<span class="image fit"><img src="images/system_architecture/block_scheme.jpg" alt="" /></span>
-
+					<h2>Custom communication protocol</h2>
+					<p>
+					<span class="image right"><img src="images/system_architecture/i2c_multi_drop.jpg" alt="" /></span>
+						The MCU and the slaves communicate using the I2C serial protocol and are connected in a multi-drop network.
+						<br>
+						We designed a minimal application-layer communication protocol to communicate information between the master and slave boards. The custom protocol allows the master to:
+						<ul>
+							<li>Communicate path coordinates to the slave;</li>
+							<li>Control the start and stop the motors;</li>
+							<li>Read the status of the slaves;</li>
+							<li>Set PID parameters.</li>
+						</ul>
+						Each slave board has its own I2C address so it can communicate individually with the master.
+					</p>
+					
+					<h2>Commands list</h2>
+					<h4>Generic command</h4>
+					<p>
+						A generic command has the following format:
+						<br>
+						<br>
+						<code>0xYY 0xKK 0xZZ 0xUU 0xUU 0xUU 0xUU</code>
+						<br>
+						<br>
+						where:
+						<ul>
+							<li><code>0xYY</code> is the command ID;</li>
+							<li><code>0xKK</code> is the length of the message being sent (command ID included);</li>
+							<li><code>0xZZ</code> is available for read/write commands only. It contains the virtual memory address of the data being sent/read;</li>
+							<li><code>0xZZ</code> is available for read/write commands only. It contains the 4 byte read/write payload.</li>
+						</ul>
+					</p>
+					<h4>Command ID <code>0xYY</code></h4>
+					<p>
+						<ul>
+							<li><code>0x01</code>: ACK</li>
+							<li><code>0x02</code>: NACK</li>
+							<li><code>0x03</code>: START</li>
+							<li><code>0x04</code>: STOP</li>
+							<li><code>0x05</code>: WRITE</li>
+							<li><code>0x06</code>: READ</li>
+						</ul>
+					</p>
+					<h4>Virtual memory address<code>0xZZ</code></h4>
+					Numerical data is sent to virtual memory addresses so that the slave knows what to do with the data it has received from the master.
+					<p>
+						<ul>
+							<li><code>0x00</code>: speed</li>
+							<li><code>0x01</code>: position</li>
+							<li><code>0x02</code>: acceleration</li>
+							<li><code>0x03</code>: answer to read command [TODO: should this be removed?]</li>
+							<li><code>0x04...0xFF</code>: to be defined</li>
+						</ul>
+					</p>
 				</section>
 			</div>
 		</div>
