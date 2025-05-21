@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+
+<head>
+	<title>The Bonding Project</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+
+				<!-- Header -->
+				<script src="header.js"></script>
+
+				<!-- Content -->
+				<section>
+					<header class="main">
+						<h1>Master board</h1>
+					</header>
+
+					<h2>Introduction</h2>
+					<h4>Rationale</h4>
+					<p>
+					As anticipated in the <a href="system_architecture.html">system architecture</a>, the master board contains
+					the true brains of the machine, the Master Control Unit (MCU). Its job is to control the slave motor drivers,
+					the heater, the ultrasonic element, etc.
+					</p>
+
+					<h4>Bulding a custom PCB</h4>
+					<p>
+					Same as in the <a href="motor_control.html">slave driver boards</a> we decided to build a custom PCB for the master
+					control board. Building the board by hand is unthinkable, as there are too many connections to make (the LCD screen,
+					the external RAM, the serial communication with the slaves and so on).
+					Using a ST Nucleo with tens of jumpers would be bulky and unreliable. Wires must not disconnect or move when
+					moving the bonding machine and furthermore the circuit operates in the MHz frequency range, making connections
+					length and layout important.
+					</p>
+
+					<hr class="major" />
+					
+					<h2>Drivers in detail</h2>
+					<p>
+						The schematic, the PCB layout and the 3D model can be found in the
+						<a href="downloads.html#master_board">downloads area</a>
+						of this website.
+					</p>
+
+					<h4>Schematic</h4>
+
+					<h4>Image gallery</h4>
+		
+				</section>
+			</div>
+		</div>
+
+		<!-- Sidebar and Footer -->
+		<script src="sidebar_and_footer.js"></script>
+	</div>
+
+	<!-- Scripts -->
+	<script src="js_scripts.js"></script>
+</body>
+
+</html>

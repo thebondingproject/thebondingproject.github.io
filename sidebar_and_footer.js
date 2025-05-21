@@ -14,9 +14,10 @@ document.write('\
 					<li><a href="project_overview.html">Project overview</a></li>\
 					<li><a href="system_architecture.html">System architecture</a></li>\
 					<li><a href="mechanical_description.html">Mechanical description</a></li>\
+					<li><a href="motor_control.html">Motor control</a></li>\
+					<li><a href="master_board.html">Master board</a></li>\
 					<li><a href="ultrasonic_driver.html">Ultrasonic driver</a></li>\
 					<li><a href="heating_stage.html">Heating stage</a></li>\
-					<li><a href="motor_control.html">Motor control</a></li>\
 					<li><a href="camera_and_optics.html">Camera and optics</a></li>\
 					<li><a href="downloads.html">Downloads</a></li>\
 					<li>\
