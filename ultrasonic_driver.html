@@ -122,7 +122,6 @@
 					<hr class="major" />
 
 					<h2>Building the ultrasonic driver circuit</h2>
-					<h4>The schematic</h4>
 					<p>
 						The
 						<a href="downloads.html#ultrasonic_driver_schematics"><span class="icon solid fa-file-image">
@@ -131,11 +130,11 @@
 						<a href="downloads.html#ultrasonic_driver_PCB"><span class="icon solid fa-file-image">
 							</span>PCB layout and 3D model</a>
 						can be found in the
-						<a href="downloads.html#ultrasonic_driver"></span>downloads area</a>
+						<a href="downloads.html#ultrasonic_driver">downloads area</a>
 						of this website.
-
-						<br><br>
-
+					</p>
+					<h4>The schematic</h4>
+					<p>
 						The driver schematic is reported in the image below. The following observations can be made:
 					<ul>
 						<li>The transformer T1 matches the output impedance of the LM380 amplifier. The opamp has an
@@ -163,10 +162,22 @@
 						<li>The circuit also requires dual 5V power supply (i.e. +5V and -5V rails) to be supplied from
 							the outside.</li>
 					</ul>
+					</p>
 					<span class="image fit"><img src="images/ultrasonic_driver/Schematic_Prints.png" alt="" /></span>
+					<h4>The PCB</h4>
+					<p>
+					In order to make a reliable physical realization of the circuit reported above we decided to design
+					our own custom PCB. We couldn't opt for a quick-and-dirty solution like a manually soldered perf board
+					because this circuit operates in the MHz frequency range, making the length of connections and wires
+					a desing parameter.
+					<br>
+					We report the custom PCB we designed below. 
+					<br><br>
+					<span class="image fit"><img src="images/ultrasonic_driver/PCB_layout.png" alt="" /></span>
 					</p>
 
 					<hr class="major" />
+					
 					<h2>Ultrasonic driver and wire feed details</h2>
 					We decided to report here the ultrasonic transducer and the other ancillary mechanisms required to
 					perform wedge bonds.

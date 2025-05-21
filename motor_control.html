@@ -25,10 +25,68 @@
 						<h1>Motor control</h1>
 					</header>
 
-					<h2>Titolo paragrafo</h2>
+					<h2>Introduction</h2>
+					<h4>Rationale</h4>
+					<p>
+					The bonding machine needs to control 4 indipendent axes (X, Y, Z and θ ) with 4 motors as already described in the
+					<a href="mechanical_description.html">mechanical description</a>.
+					<br>
+					Furthermore, we decided to keep the master control unit (MCU) separate from the motor drivers.
+					Each driver is a slave board communicates with the MCU through a custom serial protocol
+					(see <a href="system_architecture.html">system architecture</a>), and each motor is controlled by a separate board.
+					</p>
 
-					<h4>Titolo sottoparagrafo</h4>
-					<p>Contenuto</p>
+					<h4>From demo boards to a custom PCB</h4>
+					<p>
+					The heart of the driver is a STM32F302R876 microcontroller by ST Microelectronics which controls a BD16912EFV-C
+					motor driver IC by ROHM Semiconductor. Each manufacturer offers demo board we could buy and use for our project,
+					but We decided to design our own custom PCB to host the two ICs for the following reason:
+					<ul>
+						<li>The STM Nucleo demo boards are expensive; the same goes for the BD16912EFV-C demo boards. It was cheaper
+							to buy the individual components and assemble them on a custom PCB, as PCB manufacturing in China is very
+							cheap nowadays (5 small boards cost €5). Shipping is actually more expensive than manufacturing, as fast shipping
+							with a courier costs €20;</li>
+						<li>Demo boards are bulky and have a lot of unnecessary headers and components; our boards contain the bare
+							minimum to make the circuit work reliably, reducing the physical size of the drivers. This is important
+							because we want to house all electronics in a small box mounted on the the bonding machine itself;</li>
+						<li>Building custom PCBs is an important skill that cannot be taught in ordinary classroom lessons; we figured
+							we could use this opportunity to consolidate our PCB design skills.</li>
+					</ul>
+					</p>
+					
+					<hr class="major" />
+					
+					<h2>Drivers in detail</h2>
+					<p>
+						The schematic and the PCB layout and 3D model can be found in the
+						<a href="downloads.html#motor_control">downloads area</a>
+						of this website.
+					</p>
+
+					<h4>Schematic</h4>
+					<span class="image fit"><img src="images/motor_driver/Servo_Motor_Driver_schematic.gif" alt="" /></span>
+
+					<h4>Image gallery</h4>
+					<p>
+					<ul>
+						<li><b>Top-left</b>: top view of the PCB;</li>
+						<li><b>Top-right</b>: bottom view of the PCB;</li>
+						<li><b>Bottom-left</b>: 3D view of the PCB;</li>
+						<li><b>Bottom-right</b>: assembled PCB.</li>
+					</ul>
+					<div class="box alt">
+						<div class="row aln-center">
+							<div class="col-6"><span class="image fit"><img
+										src="images/motor_driver/Servo_Motor_Driver_top.gif" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="images/motor_driver/Servo_Motor_Driver_bottom.gif" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="images/motor_driver/Servo_Motor_Driver_pcb.gif" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="images/motor_driver/assembled_PCB.jpeg" alt="" /></span></div>
+						</div>
+					</div>
+					</p>
 				</section>
 			</div>
 		</div>
