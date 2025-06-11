@@ -98,11 +98,13 @@
 					Numerical data is sent to virtual memory addresses so that the slave knows what to do with the data it has received from the master.
 					<p>
 						<ul>
-							<li><code>0x00</code>: speed</li>
-							<li><code>0x01</code>: position</li>
+							<li><code>0x00</code>: position</li>
+							<li><code>0x01</code>: speed</li>
 							<li><code>0x02</code>: acceleration</li>
-							<li><code>0x03</code>: answer to read command [TODO: should this be removed?]</li>
-							<li><code>0x04...0xFF</code>: to be defined</li>
+							<li><code>0x03</code>: measured position</li>
+							<li><code>0x04</code>: measured speed</li>
+							<li><code>0x05</code>: measured current</li>
+							<li><code>0x06...0xFF</code>: reserved for future use</li>
 						</ul>
 					</p>
 				</section>
