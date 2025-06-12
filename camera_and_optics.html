@@ -25,21 +25,48 @@
 						<h1>Camera and optics</h1>
 					</header>
 
-					<h2>Titolo paragrafo</h2>
+					<h2>Custom CMOS camera microscope</h2>
 
-					<h4>Titolo sottoparagrafo</h4>
-					<p>To achieve a microscopic-scale vision, a basic microscope was created by positioning a suitable optical
-					   lens and a CMOS camera at the opposite ends of a metal extension tube. The CMOS camera was then connected
-					   to a PC using the ESP32-CAM module. What can be observed when a generic die is placed under the
-					   microscope is shown in the figure (mettere foto con dimensioni). We are happy with the result achieved;
-					   however, our goal for the future is to use an independent touchscreen display that can be mounted on the
-					   machine’s frame, for which we have already built a prototype (foto). We do not plan to focus on this
-					   additional step at this stage of the project, as we consider it to be of secondary importance.</p>
+					<h4>Rationale</h4>
+					<p>
+						To achieve a precision of a few microns when positioning the machine head we can't possibly rely
+						on human vision, which is different from individual to individual and can resolve objects of around
+						100 microns at maximum.
+						<br>
+						This implies that we need image amplification through a microscope. The original machine had an optical
+						binocular microscope as it can be seen in the <a href="project_overview.html">project overview</a>,
+						but unfortunately it wasn't included along with the machine head we bought.	This meant we had to
+						build our own from scratch.
+					</p>
+
+					<h4>Our design</h4>
+					
+					<p>
+						A basic microscope was created by positioning a suitable optical lens and a CMOS camera at the opposite
+						ends of a metal extension tube as it can be seen in the picture below. This is the same approach that
+						amateur photographers use to take macro pictures on DSLR cameras without having to buy expensive
+						dedicated macro lenses.
+						<br><br>
+						<span class="image fit"><img src="media/project_overview/lens.jpg" alt="" /></span>
+						
+						The CMOS camera is connected to a ESP32 through an ESP32-CAM module; the ESP32 is connected to a PC
+						through a dedicated Wi-Fi connection. This allows us to access the camera wirelessly, which simplifies
+						the wiring of the machine, which is already rather complex.
+					</p>
+					
+					<h4>Image gallery</h4>
+					<p>
+						What can be observed when a generic die is placed under the microscope is shown in the figure (mettere foto con dimensioni). 
+					</p>
+					
+					<hr class="major" />
+					
+					<h2>Future work</h2>
+					<h4>Camera and LCD display</h4>
 
 					<hr class="major" />
 
 					<h2>Microscope detail</h2>
-					<span class="image fit"><img src="media/project_overview/lens.jpg" alt="" /></span>
 				</section>
 			</div>
 		</div>
