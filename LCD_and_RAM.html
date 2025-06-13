@@ -60,6 +60,11 @@
 						The problem of interconnections became really evident when we tried to connect a 50 pin SMD M12L16161A SDRAM to a
 						NUCLEO-H723ZG as it can be seen in the photo below. You can find the datasheet in the <a href="downloads.html#lcd_ram">downloads</a>
 						section of this website.
+						
+						<ul>
+							<li><b>Left</b>: pinout of the SDRAM;</li>
+							<li><b>Right</b>: memory mounted on a piece of perfboard to make it compatible with a perfboard in order to perform tests.</li>
+						</ul>
 						<div class="box alt">
 							<div class="row aln-center">
 								<div class="col-6"><span class="image fit"><img
@@ -88,6 +93,11 @@
 						We chose a IS66WVH8M8FALL ISSI 64Mb (megabits, i.e. 8 megabytes) HyperRAM. You can find the datasheet in the
 						<a href="downloads.html#lcd_ram">downloads</a> section of this website. As you can immediately see in the photos below,
 						the HyperRAM's connections are way simpler and tidier.
+						
+						<ul>
+							<li><b>Left</b>: pinout of the HyperRAM;</li>
+							<li><b>Right</b>: memory mounted on a piece of perfboard to make it compatible with a perfboard in order to perform tests.</li>
+						</ul>
 						<div class="box alt">
 							<div class="row aln-center">
 								<div class="col-6"><span class="image fit"><img
@@ -136,12 +146,32 @@
 					<h2>The GUI</h2>
 					<h4>Using the STM32 TouchGFX library</h4>
 					<p>
-						Descrivere perché e percome abbiamo scelto TouchGFX
+						To design the graphical user interface (GUI) for our machine we decided to use ST's TouchGFX library
+						which is a very broadly diffused tool to develop modern GUIs for embedded applications.
+						<br>
+						The main advantage of TouchGFX is its simplicity and fast time to market, as it provides an intuitive
+						graphical environment with drag and drop and real time simulation.
+						Unfortunately, due to the aforementioned RAM problem, we couldn't test the complete interface on our 
+						NUCLEO-H723ZG board as the IDE refused to even attempt to load the program onto the microcontroller.
+						We confirmed that the TouchGFX library worked by greatly reducing the screen resolution and loading a very basic
+						GUI (a blue screen with a white dot in the centre).
+						<br><br>
+						Anyways, we decided to report the current state of the complete GUI in the images below. We will resume
+						work on it as soon as we'll have the external HyperRAM working properly on the custom MCU PCB.
+						
+						<ul>
+							<li><b>Left</b>: main screen, with current bond parameters (left), the camera (gray area) and crosshair (red lines) for precise positioning;</li>
+							<li><b>Right</b>: settings screen to edit bond parameters (left) with the numpad (right).</li>
+						</ul>
+						<div class="box alt">
+							<div class="row aln-center">
+								<div class="col-6"><span class="image fit"><img
+											src="media/lcd_ram/gui_main.png" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img
+											src="media/lcd_ram/gui_settings.png" alt="" /></span></div>
+							</div>
+						</div>
 					</p>
-					<h4>Image gallery</h4>
-					<p>
-						Far vedere l'interfaccia progettata finora
-					</p>	
 				</section>
 			</div>
 		</div>
