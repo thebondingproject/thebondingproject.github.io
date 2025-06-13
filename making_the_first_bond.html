@@ -25,25 +25,77 @@
 						<h1>Making the first bond</h1>
 					</header>
 
-					<h2>Introduction</h2>
-					<h4>Setup</h4>
+					<h2>Setup</h2>
+					<h4>Introduction</h4>
 					<p>
 						Once we mounted the motor drivers on the frame of the machine (see the <a href="motor_control.html">motor control</a>
 						section) and got the master-slave communication working (see the <a href="system_architecture.html">system architecture</a>
 						section) we were ready to perform the first bond test.
-						<br>
-						As we didn't have the master PCB ready yet nor the LCD screen and the camera, 
+						<br><br>
+						The MCU we used was a NUCLEO-H723ZG board. The whole setup was powered using three bench power supplies as we haven't yet
+						designed a suitable custom power supply for the whole apparatus. You can see a photo of the setup in the image below.
+						<br><br>
+						<span class="image fit"><img src="media/first_bond/WhatsApp Image 2025-06-12 at 09.32.58.jpeg" alt="" /></span>
 					</p>
 
-						- mostrare foto del setup con il quale abbiamo fatto il primo bond (bench di laboratorio, la foto ce l'ha max)
-						- dire che abbiamo fatto il controllo usando il monitor di ST
-						- dire che abbiamo abbassato a mano la testa della macchina e dire che parametri abbiamo nella macchina (250ms a piena potenza)
-						- Mettere il video del bond
-						- mettere le foto del bond
+					<h4>STM32CubeMonitor control interface</h4>
+					<p>
+						As we didn't have the master PCB ready yet nor the LCD screen and the camera, we used the STM32CubeMonitor software
+						to create a basic control UI as described in the images below.
+						<br>
+						The bond is perfomed by pressing the "bond" button, which turns on the ultrasonic driver to full power for 250ms.
+						This timing has to be precise: if it lasts too little the wire doesn't have enough time to melt; if it lasts
+						too long the bond gets formed and then detaches due excessive stimulation.
 
-					<h4>Titolo sottoparagrafo</h4>
-					<p>Contenuto</p>
+						<div class="box alt">
+							<div class="row aln-center">
+								<div class="col-6"><span class="image fit"><img
+											src="media/first_bond/monitor_1.png" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img
+											src="media/first_bond/monitor_2.png" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img
+											src="media/first_bond/monitor_3.png"
+											alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img src="" alt="" /></span></div>
+							</div>
+						</div>
+					</p>
 
+					<hr class="major" />
+					
+					<h2>Performing the bond</h2>
+					The bonding prcedure was perfomed by following the following steps:
+					<ul>
+						<li>Position the bed by manipulating the XY coordinates;</li>
+						<li>Make the head descend by manipulating the Z coordinate;</li>
+						<li>Close the clamp solenoid;</li>
+						<li>Activate the ultrasonic driver;</li>
+						<li>Open the clamp solenoid;</li>
+					</ul>
+					
+					As the Z motor was not yet calibrated, the descent of the machine head was aided by manual
+					human intervetion. The XY movement, on the other hand, required no outside help.
+					<br>
+					The following video shows the bonding procedure we managed to perform with this setup.
+					<br><br>
+
+					<span class="image fit"><video controls width="100%">
+						<source src="media/first_bond/Vid-20250610-Wa0009.mp4" type="video/mp4"></video></span>
+
+					And here you can see a few images of the bond: 
+					<br><br>
+
+					<div class="box alt">
+						<div class="row aln-center">
+							<div class="col-6"><span class="image fit"><img
+								src="media/first_bond/WhatsApp Image 2025-06-10 at 18.29.50.jpeg" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+								src="media/first_bond/WhatsApp Image 2025-06-10 at 18.30.06.jpeg" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+									src="media/first_bond/WhatsApp Image 2025-06-12 at 09.32.59.jpeg" alt="" /></span></div>
+							<div class="col-6"></div>
+						</div>
+					</div>
 				</section>
 			</div>
 		</div>
