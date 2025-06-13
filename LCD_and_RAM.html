@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+
+<head>
+	<title>The Bonding Project</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+
+				<!-- Header -->
+				<script src="header.js"></script>
+
+				<!-- Content -->
+				<section>
+					<header class="main">
+						<h1>LCD and external RAM</h1>
+					</header>
+
+					<h2>Introduction</h2>
+					<h4>Rationale</h4>
+					<p>
+						As we wanted to build a completely standalone bonding machine we couldn't rely on a computer screen
+						and keyboard to control the bonding process. We decided that an interactive touchscreen LCD
+						alongh with a physical joystick would make a great UI for our machine.
+						<br>
+						The idea is to control the movement of the machine through the joystick while the screen is used
+						to configure parameters, input data, view the camera, etc.
+					</p>
+
+					<h4>The problem of memory</h4>
+					<p>
+						The LCD we decided to use is a 800x480 RGB LCD TFT screen which requires a framebuffer of 800*480*3=1152000 bytes.
+						This exceeds the maxiumum RAM available on our STM32H723ZGT6 microcontroller, meaning that we need to use an external
+						RAM to store and elaborate the framebuffer.
+						<br><br>
+						This opens up a question: which of the many RAM technology is best for us? 
+					</p>
+
+					<hr class="major" />
+
+					<h2>RAM</h2>
+					<h4>The problem with SDRAMs</h4>
+					<p>
+						We could use a standard parallel SRAM which is widely supported and diffused on all microcontrollers, but it
+						requires a lot of interconnections and microcontroller pins.
+						Pins are shared by various hardware interfaces; reserving them for she SRAM means that many of these interfaces
+						will become impossible to use. Furthermore, having lots of interconnections means that the PCB design gets more
+						complex and manufacturing more expensive as more PCB layers might be required.
+						<br>
+						The problem of interconnections became really evident when we tried to connect a 50 pin SMD M12L16161A SDRAM to a
+						NUCLEO-H723ZG as it can be seen in the photo below.
+						[todo foto]
+						<br>
+						We then configured the microcontroller to interface the external RAM and everything worked almost out of the box.
+						Unfortunately we soon encountered a problem we couldn't get around in any way: one of the pins used by the SDRAM
+						is shared with the parallel camera interface and we need to use both of them.
+						<br>
+						This problem forced us to abandon the SDRAM strategy. We could've tried unhortodox ways to get around it by
+						bypassing the ST IOC configurator and manually remapping pins using confiuguration text files,
+						but we decided against it as we didn't want to give up the comfort of the IOC graphical interface. As a matter of fact,
+						the IOC doesn't just configurate interfaces, but also generates code automatically which helps to save loads of time
+						during development. 
+					</p>
+					<h4>Using HyperRAMs</h4>
+					<p>
+						The other strategy is to use HyperRAMs, which use a serial protocol to communicate to and from the microcontroller
+						requiring less pins to be utilized. Unfortunately HyperRAMs are a new technology, meaning that documentation and examples
+						are scarce.
+					</p>
+					
+
+					<hr class="major" />
+
+					<h2>The screen</h2>
+					<h4>Hardware description</h4>
+					<p>
+						Descrizione hardware dello schermo
+					</p>
+					<h4>Custom enclosure and mounting point</h4>
+					<p>
+						foto dell'enclosure e mostrare com'è montato sulla macchina
+					</p>
+
+					<hr class="major" />
+					
+					<h2>The GUI</h2>
+					<h4>Using the STM32 TouchGFX library</h4>
+					<p>
+						Descrivere perché e percome abbiamo scelto TouchGFX
+					</p>
+					<h4>Image gallery</h4>
+					<p>
+						Far vedere l'interfaccia progettata finora
+					</p>	
+				</section>
+			</div>
+		</div>
+
+		<!-- Sidebar and Footer -->
+		<script src="sidebar_and_footer.js"></script>
+	</div>
+
+	<!-- Scripts -->
+	<script src="js_scripts.js"></script>
+</body>
+
+</html>
