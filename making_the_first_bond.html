@@ -47,6 +47,12 @@
 						This timing has to be precise: if it lasts too little the wire doesn't have enough time to melt; if it lasts
 						too long the bond gets formed and then detaches due excessive stimulation.
 
+						<ul>
+							<li><b>Top-left</b>: control flow on the STM32CubeMonitor software;</li>
+							<li><b>Top-right</b>: machine virtual control panel;</li>
+							<li><b>Bottom-left</b>: machine virtual control panel;</li>
+						</ul>
+
 						<div class="box alt">
 							<div class="row aln-center">
 								<div class="col-6"><span class="image fit"><img
@@ -64,38 +70,55 @@
 					<hr class="major" />
 					
 					<h2>Performing the bond</h2>
-					The bonding prcedure was perfomed by following the following steps:
-					<ul>
-						<li>Position the bed by manipulating the XY coordinates;</li>
-						<li>Make the head descend by manipulating the Z coordinate;</li>
-						<li>Close the clamp solenoid;</li>
-						<li>Activate the ultrasonic driver;</li>
-						<li>Open the clamp solenoid;</li>
-					</ul>
+					<h4>The bonding procedure</h4>
+					<p>
+						The bonding prcedure was perfomed by following the following steps:
+						<ul>
+							<li>Position the bed by manipulating the XY coordinates;</li>
+							<li>Make the head descend by manipulating the Z coordinate;</li>
+							<li>Close the clamp solenoid;</li>
+							<li>Activate the ultrasonic driver;</li>
+							<li>Open the clamp solenoid;</li>
+						</ul>
+						
+						As the Z motor was not yet calibrated, the descent of the machine head was aided by manual
+						human intervetion. The XY movement, on the other hand, required no outside help.
+						<br>
+						Furthermore, as the wire we used was made of aluminum, the we didn't need to turn on the
+						heated bed to make the bond. The heated bed is necessary only when performing bonds with
+						gold wire.
+						
+					</p>
 					
-					As the Z motor was not yet calibrated, the descent of the machine head was aided by manual
-					human intervetion. The XY movement, on the other hand, required no outside help.
-					<br>
-					The following video shows the bonding procedure we managed to perform with this setup.
-					<br><br>
+					<h4>Video of the procedure and image gallery</h4>
+					<p>
+						The following video shows the bonding procedure we managed to perform with this setup.
+						<br><br>
 
-					<span class="image fit"><video controls width="100%">
-						<source src="media/first_bond/Vid-20250610-Wa0009.mp4" type="video/mp4"></video></span>
+						<span class="image fit"><video controls width="100%">
+							<source src="media/first_bond/Vid-20250610-Wa0009.mp4" type="video/mp4"></video></span>
 
-					And here you can see a few images of the bond: 
-					<br><br>
+						And here you can see a few images of the bond:
+						<ul>
+							<li><b>Top-left</b>: test object on which to perform the bonds;</li>
+							<li><b>Top-right</b>: detail of the bonds on the test object;</li>
+							<li><b>Bottom-left</b>: detail of the bonding apparatus;</li>
+							<li><b>Bottom-right</b>: detail of the bonding apparatus.</li>
+						</ul>
 
-					<div class="box alt">
-						<div class="row aln-center">
-							<div class="col-6"><span class="image fit"><img
-								src="media/first_bond/WhatsApp Image 2025-06-10 at 18.29.50.jpeg" alt="" /></span></div>
-							<div class="col-6"><span class="image fit"><img
-								src="media/first_bond/WhatsApp Image 2025-06-10 at 18.30.06.jpeg" alt="" /></span></div>
-							<div class="col-6"><span class="image fit"><img
-									src="media/first_bond/WhatsApp Image 2025-06-12 at 09.32.59.jpeg" alt="" /></span></div>
-							<div class="col-6"></div>
+						<div class="box alt">
+							<div class="row aln-center">
+								<div class="col-6"><span class="image fit"><img
+									src="media/first_bond/Filtro_RF.jpg" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img
+											src="media/first_bond/WhatsApp Image 2025-06-12 at 09.32.59.jpeg" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img
+										src="media/first_bond/WhatsApp Image 2025-06-10 at 18.29.50.jpeg" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img
+									src="media/first_bond/WhatsApp Image 2025-06-10 at 18.30.06.jpeg" alt="" /></span></div>
+							</div>
 						</div>
-					</div>
+					</p>
 				</section>
 			</div>
 		</div>

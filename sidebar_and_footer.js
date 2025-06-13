@@ -22,6 +22,7 @@ document.write('\
 					<li><a href="making_the_first_bond.html">Making the first bond</a></li>\
 					<li><a href="LCD_and_RAM.html">LCD and external RAM</a></li>\
 					<li><a href="downloads.html">Downloads</a></li>\
+					<!--\
 					<li>\
 						<span class="opener">Development Pages</span>\
 						<ul>\
@@ -30,6 +31,7 @@ document.write('\
         					<li><a href="elements.html">Elements</a></li>\
 						</ul>\
 					</li>\
+					-->\
 				</ul>\
 			</nav>\
 		<!-- Section -->\
