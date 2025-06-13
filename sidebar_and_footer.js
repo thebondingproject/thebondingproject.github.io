@@ -19,9 +19,8 @@ document.write('\
 					<li><a href="ultrasonic_driver.html">Ultrasonic driver</a></li>\
 					<li><a href="heating_stage.html">Heating stage</a></li>\
 					<li><a href="camera_and_optics.html">Camera and optics</a></li>\
-					<li><a href="LCD_and_RAM.html">LCD and external RAM</a></li>\
 					<li><a href="making_the_first_bond.html">Making the first bond</a></li>\
-					<li><a href="future_work.html">Future work</a></li>\
+					<li><a href="LCD_and_RAM.html">LCD and external RAM</a></li>\
 					<li><a href="downloads.html">Downloads</a></li>\
 					<li>\
 						<span class="opener">Development Pages</span>\
