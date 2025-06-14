@@ -30,7 +30,7 @@
 					<p>
 						As we wanted to build a completely standalone bonding machine we couldn't rely on a computer screen
 						and keyboard to control the bonding process. We decided that an interactive touchscreen LCD
-						alongh with a physical joystick would make a great UI for our machine.
+						along with a physical joystick would make a great UI for our machine.
 						<br>
 						The idea is to control the movement of the machine through the joystick while the screen is used
 						to configure parameters, input data, view the camera, etc.
@@ -40,7 +40,7 @@
 					<p>
 						The LCD we decided to use is a 800x480 RGB LCD TFT screen which requires a framebuffer of at most 800*480*3=1152000 bytes
 						depending on the color space used.
-						This exceeds the maxiumum RAM available on our STM32H723ZGT6 microcontroller, meaning that we need to use an external
+						This exceeds the maximum RAM available on our STM32H723ZGT6 microcontroller, meaning that we need to use an external
 						RAM to store and elaborate the framebuffer.
 						<br><br>
 						This opens up a question: which of the many RAM technology is best for us? 
@@ -78,10 +78,10 @@
 						Unfortunately we soon encountered a problem we couldn't get around in any way: one of the pins used by the SDRAM
 						is shared with the parallel camera interface and we need to use both of them.
 						<br><br>
-						This problem forced us to abandon the SDRAM strategy. We could've tried unhortodox ways to get around it by
-						bypassing the ST IOC configurator and manually remapping pins using confiuguration text files,
+						This problem forced us to abandon the SDRAM strategy. We could've tried unorthodox ways to get around it by
+						bypassing the ST IOC configurator and manually remapping pins using configuration text files,
 						but we decided against it as we didn't want to give up the comfort of the IOC graphical interface. As a matter of fact,
-						the IOC doesn't just configurate interfaces, but also generates code automatically which helps to save loads of time
+						the IOC doesn't just configure interfaces, but also generates code automatically which helps to save loads of time
 						during development. 
 					</p>
 					<h4>Using HyperRAMs</h4>
@@ -199,7 +199,7 @@
 						As already stated, we want to control the motors and the bond procedures through a physical joystick and buttons. 
 						We thought the user might prefer to have an actual physical feedback when moving the machine's axes.
 						<br>
-						We haven't yet made any prototype of this "conrtroller", but we did a brainstorming session to find inspiration
+						We haven't yet made any prototype of this "controller", but we did a brainstorming session to find inspiration
 						from existing solutions. We found inspiration from gaming console controllers like the one depicted below.
 						We mounted a joystick on a breadboard and interfaced it with two ADCs the aforementioned NUCLEO-H723ZG as a proof 
 						of concept, and we successfully managed to control the motors with satisfactory precision.
