@@ -21,6 +21,7 @@ document.write('\
 					<li><a href="camera_and_optics.html">Camera and optics</a></li>\
 					<li><a href="making_the_first_bond.html">Making the first bond</a></li>\
 					<li><a href="LCD_and_RAM.html">LCD and external RAM</a></li>\
+					<li><a href="LCD_and_RAM.html">Power supply</a></li>\
 					<li><a href="downloads.html">Downloads</a></li>\
 					<!--\
 					<li>\
