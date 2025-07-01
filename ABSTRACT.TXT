@@ -1,0 +1,5 @@
+[en]
+The Bonding Project aims at building a cost-effective bonding machine by repurposing the core of an old decommissioned industrial bonding machine using homemade and scrap parts.
+We want to be able to perform highly specialized repairs (replacing burned power transistors in RF oscillators) which require wedge bonds to be performed.
+In this website we will describe the mechanical structure of the machine as well as its electrical architecture, with more focus on the latter. We will provide an accurate description of the motor controller boards, the master control unit (MCU) board, the heating element, the LCD, the external RAM, the ultrasonic driver, etc.
+Finally, we will show the machine actually performing the bond procedure on a test substrate.
