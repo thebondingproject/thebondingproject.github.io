@@ -12,16 +12,31 @@ document.write('\
 				<ul>\
 					<li><a href="index.html">Homepage</a></li>\
 					<li><a href="project_overview.html">Project overview</a></li>\
-					<li><a href="system_architecture.html">System architecture</a></li>\
-					<li><a href="mechanical_description.html">Mechanical description</a></li>\
-					<li><a href="motor_control.html">Motor control</a></li>\
-					<li><a href="master_board.html">Master board</a></li>\
-					<li><a href="ultrasonic_driver.html">Ultrasonic driver</a></li>\
-					<li><a href="heating_stage.html">Heating stage</a></li>\
-					<li><a href="camera_and_optics.html">Camera and optics</a></li>\
-					<li><a href="making_the_first_bond.html">Making the first bond</a></li>\
-					<li><a href="LCD_and_RAM.html">LCD and external RAM</a></li>\
-					<li><a href="LCD_and_RAM.html">Power supply</a></li>\
+					<li>\
+						<span class="opener">System description</span>\
+						<ul>\
+        					<li><a href="system_architecture.html">System architecture</a></li>\
+							<li><a href="mechanical_description.html">Mechanical description</a></li>\
+							<li><a href="motor_control.html">Motor control</a></li>\
+							<li><a href="master_board.html">Master board</a></li>\
+							<li><a href="ultrasonic_driver.html">Ultrasonic driver</a></li>\
+							<li><a href="heating_stage.html">Heating stage</a></li>\
+							<li><a href="camera_and_optics.html">Camera and optics</a></li>\
+						</ul>\
+					</li>\
+					<li>\
+						<span class="opener">Bonding experiments</span>\
+						<ul>\
+							<li><a href="making_the_first_bond.html">Making the first bond</a></li>\
+						</ul>\
+					</li>\
+					<li>\
+						<span class="opener">WIP and future work</span>\
+						<ul>\
+							<li><a href="LCD_and_RAM.html">LCD and external RAM</a></li>\
+							<li><a href="power_supply.html">Power supply</a></li>\
+						</ul>\
+					</li>\
 					<li><a href="downloads.html">Downloads</a></li>\
 					<!--\
 					<li>\

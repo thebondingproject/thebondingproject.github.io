@@ -243,6 +243,9 @@
 
 				var $this = $(this);
 
+				// Openers are open by default (remove this line to keep them closed by default)
+				$this.toggleClass('active');
+
 				$this.on('click', function(event) {
 
 					// Prevent default.
