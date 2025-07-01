@@ -1,0 +1,15 @@
+title: The Bonding Project
+author: Danelutti Massimo (danelutti.massimo(at)spes.uniud.it)
+author: Minigher Claudio (minigher.claudio(at)spes.uniud.it)
+author: Sanson Luca (sanson.luca(at)spes.uniud.it)
+home: index.html
+# The following line is NOT ignored. The ’#’ is part of the keyword
+keyword: bonding machine
+keyword: bonding
+keyword: wire bonding
+keyword: wire bond
+keyword: wedge bonding
+keyword: wedge bond
+keyword: homemade bonding machine
+keyword: homemade wire bond
+keyword: homemade bond
