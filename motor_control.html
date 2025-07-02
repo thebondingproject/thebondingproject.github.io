@@ -57,7 +57,7 @@
 					
 					<hr class="major" />
 					
-					<h2>Drivers in detail</h2>
+					<h2>Drivers boards in detail</h2>
 					<p>
 						The schematic, the PCB layout and the 3D model can be found in the
 						<a href="downloads.html#motor_control">downloads area</a>
@@ -87,6 +87,52 @@
 										src="media/motor_driver/assembled_PCB.jpeg" alt="" /></span></div>
 						</div>
 					</div>
+					</p>
+					
+					<hr class="major" />
+					<h2>PI controller</h2>
+					<p>
+						<span class="image fit"><img src="media/motor_driver/Servvo_block_diagram.PNG" alt="" /></span>
+						
+						<span class="image right"><img src="media/motor_driver/Motor_model.PNG" alt="" /></span>
+
+						<span class="image fit"><img src="media/motor_driver/PI_controller.PNG" alt="" /></span>
+					</p>
+
+					<hr class="major" />
+					
+					<h2>Motion profiling</h2>
+					<p>
+						
+						<span class="image right"><img src="media/motor_driver/trapezoidal_profiling.png" alt="" /></span>
+
+						In order to achieve smooth movement on each of the four axes, we decided to implement trapezoidal motor profiling
+						by following <a href="https://www.ctrlaltftc.com/advanced/motion-profiling">this article</a> (you can find a 
+						PDF print of this article in the <a href="downloads.html#motor_control">downloads area</a>).
+						<br><br>
+						As you can see on the image on the right, by shaping the velocity target as the trapezoid (orange line), a smooth
+						movement can be achieved (blue line): the motor first accelerates, cruises at a constant speed for a while,
+						and then decelerates smoothly when the destination is almost reached.
+						<br>
+						The control algorithm for motion profiling operates in the following way:
+						<ul>
+							<li> Setup phase:
+								<ul>
+									<li>Obtain the start and finish positions;</li>
+									<li>Set the maximum acceleration and cruising speed;</li>
+									<li>Calculate the speed trapezoidal profile;</li>
+								</ul>
+							</li>
+							<li> Movement phase (inside a while loop):
+								<ul>
+									<li>Calculate the setpoint position based on the trapezoidal speed profile;</li>
+									<li>Command the PI controller to reach the target position;</li>
+									<li>Repeat until the destination is reached.</li>
+								</ul>
+							</li>
+						</ul>
+						You can see in this video that the motor can accelerate and slow down in a controlled manner without jerks.
+						TODO: metterci il video che avevo mandato su whatsapp sul gruppo
 					</p>
 				</section>
 			</div>
