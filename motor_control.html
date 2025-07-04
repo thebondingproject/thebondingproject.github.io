@@ -91,19 +91,156 @@
 					
 					<hr class="major" />
 					<h2>PI controller</h2>
+					<h4>PI controller: current, speed, position nested loops</h4>
 					<p>
+						The complete control model is composed of three nested loops (position, speed, current). You can see the 
+						three nested loops of the complete simulated system in the image below.
 						<span class="image fit"><img src="media/motor_driver/Servvo_block_diagram.PNG" alt="" /></span>
-						
-						<span class="image right"><img src="media/motor_driver/Motor_model.PNG" alt="" /></span>
+						The modus operandi is the following:
+						<ul>
+							<li>The user chooses a target position;</li>
+							<li>The position loop generates a target speed to reach the target position;</li>
+							<li>The speed loop generates a target current to reach the target speed;</li>
+							<li>The current loop modulates the current in the motor and moves it;</li>
+							<li>Position, speed and current are always fed back to the respective control loops.</li>
+						</ul>
+						We will now analyze each of the blocks to better understand their role and functioning.
+					</p>
 
-						<span class="image fit"><img src="media/motor_driver/PI_controller.PNG" alt="" /></span>
+					<h4>Current PI controller</h4>
+					<p>
+						A generic PI controller can be modeled with the block scheme on the bottom-left. Its transfer function is
+						<div class="align-center">\(PI(s) = \frac{K_a K_b}{s} + K_a  = \frac{K_a K_b \left( 1 + \frac{s}{K_b} \right)}{s} \)</div>
+						<br>
+						We now wish to implement a current control loop to control the movement of a motor. We take the generic PI controller scheme and
+						connect a simple motor model to its output. The result is shown in the image on the bottom-right.
+						<br>
+						This current control loop operates in the following way:
+						<ul>
+							<li>It receives the target current from a previous block;</li>
+							<li>It actuates a change in the current to reach the target;</li>
+							<li>The actual current flowing in the motor windings is measured and brought back into the input of the feedback loop.</li>
+						</ul>
+						
+						<div class="box alt">
+						<div class="row aln-center">
+							<div class="col-6"><span class="image fit"><img
+										src="media/motor_driver/pi_controller_in_general.jpg" alt="" /></span>
+							</div>
+							<div class="col-6"><span class="image fit"><img
+										src="media/motor_driver/pi_controller_with_output_attached.jpg" alt="" /></span></div>
+						</div>
+						</div>
+						The closed-loop transfer function of the system is
+ 						<div class="align-center">\(G(s) = \frac{G_{loop}}{1+G_{loop}} \)</div>
+						where
+ 						<div class="align-center">\(G_{loop}(s) = \frac{G_{loop}}{1+G_{loop}} = \frac{K_a K_b \left( 1 + \frac{s}{K_b} \right)}{s}  \frac{\frac{1}{R}}{1+\frac{L}{R}s} \)</div>
+						Now, by rearranging the terms we obtain
+						<div class="align-center">\(G(s) = \frac{1+\frac{s}{K_b}}{\left( 1 + \frac{R}{K_a K_b} s\right) \left( 1 + \frac{s}{K_b} \right) } \)</div>
+					</p>
+					<h4>Choosing the parameters of the current loop</h4>
+					<p>
+						We aim to control the motor with smooth accelerations and decelerations, avoiding overshoots and oscillations. To achieve the performance
+						we desire we need to perform zero-pole cancellation on the \(G(s)\) loop transfer function reported above.
+						<br><br>
+						It can be shown (see attached files) that the optimal values of \(K_a\) and \(K_b\) to have zero-pole cancellation are:
+						<ul>
+							<li>\(K_b = \frac{R}{L}\)</li>
+							<li>\(K_b = L \cdot BW\) where \(BW=2 \pi f\) is the bandwidth of the system</li>
+						</ul>
+						<br>
+						The L and R parameters were estimated using a multimeter. The system bandwidth is a degree of freedom we have to
+						choose: more bandwidth means faster movement, but the system becomes more susceptible to noise.
+						We empirically chose a bandwidth of 1kHz as the system behaved properly at that frequency. 
+					</p>
+					
+					
+					<h4>Motor model</h4>
+					<p>
+						<div class="box alt">
+						<div class="row aln-center">
+							<div class="col-8"><span class="image fit"><img
+										src="media/motor_driver/Motor_model.PNG" alt="" /></span></div>
+						</div>
+						</div>
+					</p>
+					
+					<h4>Speed loop PI controller</h4>
+					<p>
+						Closing the speed loop control is more complex compared to the current loop due to the presence of the mechanical model
+						of the load which is normally unknown. While the mechanical parameters of the motor are usually reported in its datasheet,
+						the mechanical load actuated by the motor must be approximated using a generic low pass function like the following:
+						<div class="align-center">\(Load(s) = \frac{1}{k_{\nu}+ Js}\)</div>
+						where \(k_{\nu}\) is the viscous damping term and \(J\) is the inertia of the motor and the load combined.
+						<br>
+						The motor is modeled as
+						<div class="align-center">\(Mtr(s) = \frac{3}{4}P \lambda_r \)</div>
+						where \(P\) is the number of rotor poles and \(\lambda_r\) is the rotor flux. I NOSTRI QUANTO VALGONO?	
+						<br><br>
+						The complete speed loop is shown in the image below.
+						<div class="box alt">
+						<div class="row aln-center">
+							<div class="col-8"><span class="image fit"><img
+										src="media/motor_driver/pi_controller_speed.jpg" alt="" /></span></div>
+						</div>
+						</div>
+						Note that the low pass filter in the speed feedback loop is necessary because the signal coming from the encoder (which reads the 
+						motor's position) is usually very noisy: this is a problem, as noise in the feedback loop creates oscillations and
+						unpredictable movement.
+						<br>
+						The low pass filter has the following transfer function:
+						<div class="align-center">\(LPF(s) = \frac{1}{1+ \tau s}\)</div>
+						<br><br>
+						Now, by imposing that (\lambda_r=0\) (i.e., the viscous friction is negligible) we can write the complete open loop
+						transfer function as
+						<div class="align-center">\(GH(s) =  \frac{K_c K_d \left( 1 + \frac{s}{K_b} \right)}{s} \frac{1}{1 + \frac{L}{K_a}} \left( \frac{3}{4}P \lambda_r \right) \frac{1}{J s} \frac{1}{1+ \tau s} \)  </div>
+						where each of the terms is, in order:
+						<ul>
+							<li>Velocity PI (note that there are two constants we need to determine, namely \(K_c\) and \(K_d\));</li>
+							<li>Current loop;</li>
+							<li>Motor;</li>
+							<li>Load;</li>
+							<li>Low pass filter.</li>
+						</ul>
+					</p>
+					<h4>Choosing the parameters of the speed loop</h4>
+					<p>
+						The velocity PI has two degrees of freedom \(K_c\) and \(K_d\).
+
+						FINIRE QUA
+					</p>
+
+					<h4>Loop models</h4>
+					<p>
+						You can find all the PI controllers' Simulink models (current, speed, position) in the following image:
+						<ul>
+							<li><b>Top-left</b>: current controller;</li>
+							<li><b>Top-right</b>: speed controller;</li>
+							<li><b>Bottom-left</b>: position controller.</li>
+						</ul>
+						<div class="box alt">
+						<div class="row aln-center">
+							<div class="col-6"><span class="image fit"><img src="media/motor_driver/Current_PI.PNG" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img src="media/motor_driver/Speed_PI.PNG" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img src="media/motor_driver/PI_controller.PNG" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"></span></div>
+						</div>
+						</div>
+						
+					</p>
+
+					<h4>Simulink models and further reading </h4>
+					<p>
+						We followed a technical guide by a Texas Instruments employee to implement the motor controller. A PDF print of the original
+						article can be found in the <a href="downloads.html#motor_control">downloads area</a> of this website.  
+						<br>
+						You will also find the Simulink models discussed in this section. 
 					</p>
 
 					<hr class="major" />
 					
 					<h2>Motion profiling</h2>
 					<p>
-						
 						<span class="image right"><img src="media/motor_driver/trapezoidal_profiling.png" alt="" /></span>
 
 						In order to achieve smooth movement on each of the four axes, we decided to implement trapezoidal motor profiling
