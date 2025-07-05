@@ -32,6 +32,8 @@
 						needed to address:
 						<ul>
 							<li>We used a makeshift interface made with the STM32CubeMonitor to control the machine;</li>
+							<li>The PSU had not been made yet, therefore we used three separate bench supplies to power
+								all the components externally;</li>
 							<li>The Z motor was not yet calibrated properly (see the motor calibration procedure 
 								<a href="motor_control.html#pi_controller">here</a>). This forced us to control the Z axis by manually by moving
 							the slider-crank mechanism by hand;</li>
@@ -75,7 +77,7 @@
 						</div>
 
 						We now focus on the image on the bottom-left. The wire clamp is operated by three solenoids (see also the
-						<a href="ultrasonic_driver.html">ultrasonic driver</a> section):
+						<a href="mechanical_description.html">mechanical description</a> section):
 						<ul>
 							<li>CLAMP solenoid: the clamp is normally closed, pinching the wire like a pair of pliers.
 								When the solenoid is energized the clamp opens; </li>
@@ -88,6 +90,16 @@
 								</ul>
 							</li>
 						</ul>
+						Now, by observing the image above you can immediately deduce how the tear procedure works.
+						Suppose the machine has performed the first bond and the second, but hasn't yet risen the head from the
+						second bond location. The  clamp is open, and TEAR_1 and TEAR_2 are on (i.e., the clamp is in the feed position).
+						Now we want to break the wire to form the bond loop.
+						<ol>
+							<li>We close the clamp, pinching the wire to keep it from moving (we don't want to damage the bond we just made);</li>
+							<li>TEAR_2 is turned off: the wire gets pulled as the clamp moves from the feed to the tear position (see reference image);</li>
+							<li>The wire has now broken and the bond loop has been formed. We can now pull up the head as the bonding procedure is almost done;</li>
+							<li>TEAR_1 is turned off: the clamp goes back to its reset position, ready to perform another bond procedure.</li>
+						</ol> 
 					</p>
 					
 					<h4>Implementing the bonding procedure</h4>
@@ -103,9 +115,9 @@
 							<li>Let the user move the XY platter freely;</li>
 							<li>When the button is pressed, lower the head to the <i>second search height</i> (which is in general different from the <i>first search height</i>);</li>
 							<li>When the button is pressed again, lower the head until the substrate is touched. Then, lower the head a few microns more to exert a little pressure on the substrate;</li>
-							<li>Turn on the TEAR_1 and TEAR_2 solenoids (i.e., the clamp is in the feed position);li>
+							<li>Turn on the TEAR_1 and TEAR_2 solenoids (i.e., the clamp is in the feed position);</li>
 							<li>Perform the bond by activating the ultrasonic driver for a short time interval;</li>
-							<li>Close the clamp by turning off its solenoid and turn off the TEAR_2 solenoid (i.e., the clamp is in the tear position);li>
+							<li>Close the clamp by turning off its solenoid and turn off the TEAR_2 solenoid (i.e., the clamp is in the tear position);</li>
 							<li>Go back up to the resting position;</li>
 							<li>Turn off the TEAR_1 solenoid (i.e, the clamp goes back to the reset position).</li>
 						</ol>
