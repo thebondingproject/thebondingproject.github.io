@@ -26,10 +26,77 @@
 						<h1>Bonding the proper way</h1>
 					</header>
 
-					<h2>Titolo paragrafo</h2>
+					<h2>Introduction</h2>
+					<p>
+						The first bonding test we performed (see <a href="making_the_first_bond.html">here</a>) had some limitations that we
+						needed to address:
+						<ul>
+							<li>We used a makeshift interface made with the STM32CubeMonitor to control the machine;</li>
+							<li>The Z motor was not yet calibrated properly (see the motor calibration procedure 
+								<a href="motor_control.html#pi_controller">here</a>). This forced us to control the Z axis by manually by moving
+							the slider-crank mechanism by hand;</li>
+							<li>The solenoids were operated manually;</li>
+							<li>The ultrasonic driver was activated manually.</li>
+						</ul>
+						In this section we describe how we implemented the proper semi-automatic bonding procedure, i.e.:
+						<ul>
+							<li>Pressing a physical button initiates the head descent;</li>
+							<li>The ultrasonic driver is activated automatically, making the first bond;</li>
+							<li>The machine enters in jog mode, allowing the user to move to the second bond location;</li>
+							<li>The machine lowers its head again and activates the ultrasonic driver automatically, making the second bond;\</li>
+							<li>The head raises back to its resting position.</li>
+						</ul>
+					</p>
 
-					<h4>Titolo sottoparagrafo</h4>
-					<p>Contenuto</p>
+					<hr class="major" />
+
+					<h2>The bond procedure</h2>
+					<h4>References</h4>
+					<p>
+						In order to correctly implement the bonding procedure we used the reference manuals of wedge bonding machines
+						similar to the one we own (remember from the <a href="project_overview.html">project overview</a> that we have
+						a Kulicke Soffa 1470). We report the relevant images in the gallery below. The complete documentation
+						can be found in the <a href="downloads.html#proper_bond">downloads area</a>.
+
+						<ul>
+							<li><b>Top-left</b>: "K&S 4500 Series - Digital Series Manual - Wire Bonders", p.82;</li>
+							<li><b>Top-right</b>: "Model 4123 - Wedge Bonder - Operation And Maintenance Manual", p.79;</li>
+							<li><b>Bottom-left</b>: "Model 4123 - Wedge Bonder - Operation And Maintenance Manual", p.39;</li>
+							<li><b>Bottom-right</b>: detail of the flat cable to connector PCB.</li>
+						</ul>
+						<div class="box alt">
+							<div class="row aln-center">
+								<div class="col-10"><span class="image fit"><img
+											src="media/proper_bond/bonding_sequence.jpg" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img
+											src="media/proper_bond/bonding_sequence_2.jpg" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img
+											src="media/proper_bond/bonding_sequence_3.jpg" alt="" /></span></div>
+							</div>
+						</div>
+					</p>
+					
+					<h4>Implementing the bonding procedure</h4>
+					<p>
+						By using the documentation reported above we designed the following bonding procedure:
+						<ul>
+							<li>Wait for the button press to start the bonding procedure;</li>
+							<li>When the button is pressed, lower the head to the <i>first search height</i> (i.e., the head hangs a few mm above the substrate);</li>
+							<li>When the button is pressed again, lower the head until the substrate is touched. Then, lower the head a few microns more to exert a little pressure on the substrate;</li>
+							<li>Perform the bond by activating the ultrasonic driver for a short time interval;</li>
+							<li>Open the clamp by turning on its solenoid;</li>
+							<li>Raise the head to the <i>bond height</i> position (this parameter sets the height of the loop of wire constituting the bond);</li>
+							<li>Let the user move the XY platter freely;</li>
+							<li>When the button is pressed, lower the head to the  <i>second search height</i> (which is in general different from the <i>first search height</i>);</li>
+							<li>When the button is pressed again, lower the head until the substrate is touched. Then, lower the head a few microns more to exert a little pressure on the substrate;</li>
+							<li>Turn on the TEAR_1 and TEAR_2 solenoids; ????</li>
+							<li>Perform the bond by activating the ultrasonic driver for a short time interval;</li>
+							<li>Close the clamp by turning off its solenoid and turn off the TEAR_2 solenoid; ????</li>
+							<li>Go back up to the resting position;</li>
+							<li>Turn off the TEAR_1 solenoid. ????</li>
+							<li></li>
+						</ul>
+					</p>
 
 				</section>
 			</div>
