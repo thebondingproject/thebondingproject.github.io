@@ -28,6 +28,7 @@ document.write('\
 						<span class="opener">Bonding experiments</span>\
 						<ul>\
 							<li><a href="making_the_first_bond.html">Making the first bond</a></li>\
+							<li><a href="proper_bond.html">Bonding the proper way</a></li>\
 						</ul>\
 					</li>\
 					<li>\
