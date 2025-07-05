@@ -39,13 +39,13 @@
 							<li>The ultrasonic driver was activated manually.</li>
 						</ul>
 						In this section we describe how we implemented the proper semi-automatic bonding procedure, i.e.:
-						<ul>
+						<ol>
 							<li>Pressing a physical button initiates the head descent;</li>
 							<li>The ultrasonic driver is activated automatically, making the first bond;</li>
 							<li>The machine enters in jog mode, allowing the user to move to the second bond location;</li>
-							<li>The machine lowers its head again and activates the ultrasonic driver automatically, making the second bond;\</li>
+							<li>The machine lowers its head again and activates the ultrasonic driver automatically, making the second bond;</li>
 							<li>The head raises back to its resting position.</li>
-						</ul>
+						</ol>
 					</p>
 
 					<hr class="major" />
@@ -59,10 +59,9 @@
 						can be found in the <a href="downloads.html#proper_bond">downloads area</a>.
 
 						<ul>
-							<li><b>Top-left</b>: "K&S 4500 Series - Digital Series Manual - Wire Bonders", p.82;</li>
-							<li><b>Top-right</b>: "Model 4123 - Wedge Bonder - Operation And Maintenance Manual", p.79;</li>
+							<li><b>Top</b>: "K&S 4500 Series - Digital Series Manual - Wire Bonders", p.82;</li>
+							<li><b>Bottom-right</b>: "Model 4123 - Wedge Bonder - Operation And Maintenance Manual", p.79;</li>
 							<li><b>Bottom-left</b>: "Model 4123 - Wedge Bonder - Operation And Maintenance Manual", p.39;</li>
-							<li><b>Bottom-right</b>: detail of the flat cable to connector PCB.</li>
 						</ul>
 						<div class="box alt">
 							<div class="row aln-center">
@@ -74,12 +73,27 @@
 											src="media/proper_bond/bonding_sequence_3.jpg" alt="" /></span></div>
 							</div>
 						</div>
+
+						We now focus on the image on the bottom-left. The wire clamp is operated by three solenoids (see also the
+						<a href="ultrasonic_driver.html">ultrasonic driver</a> section):
+						<ul>
+							<li>CLAMP solenoid: the clamp is normally closed, pinching the wire like a pair of pliers.
+								When the solenoid is energized the clamp opens; </li>
+							<li>TEAR_1 and TEAR_2 solenoids: these are used to control the angular position of the clamp (see the figure above).
+								There are three different configurations:
+								<ul>
+									<li>TEAR_1 off, TEAR_2 off: clamp is in the reset position;</li>
+									<li>TEAR_1 on, TEAR_2 on: clamp is in the feed position;</li>
+									<li>TEAR_1 on, TEAR_2 off: clamp is in the tear position.</li>
+								</ul>
+							</li>
+						</ul>
 					</p>
 					
 					<h4>Implementing the bonding procedure</h4>
 					<p>
 						By using the documentation reported above we designed the following bonding procedure:
-						<ul>
+						<ol>
 							<li>Wait for the button press to start the bonding procedure;</li>
 							<li>When the button is pressed, lower the head to the <i>first search height</i> (i.e., the head hangs a few mm above the substrate);</li>
 							<li>When the button is pressed again, lower the head until the substrate is touched. Then, lower the head a few microns more to exert a little pressure on the substrate;</li>
@@ -87,15 +101,14 @@
 							<li>Open the clamp by turning on its solenoid;</li>
 							<li>Raise the head to the <i>bond height</i> position (this parameter sets the height of the loop of wire constituting the bond);</li>
 							<li>Let the user move the XY platter freely;</li>
-							<li>When the button is pressed, lower the head to the  <i>second search height</i> (which is in general different from the <i>first search height</i>);</li>
+							<li>When the button is pressed, lower the head to the <i>second search height</i> (which is in general different from the <i>first search height</i>);</li>
 							<li>When the button is pressed again, lower the head until the substrate is touched. Then, lower the head a few microns more to exert a little pressure on the substrate;</li>
-							<li>Turn on the TEAR_1 and TEAR_2 solenoids; ????</li>
+							<li>Turn on the TEAR_1 and TEAR_2 solenoids (i.e., the clamp is in the feed position);li>
 							<li>Perform the bond by activating the ultrasonic driver for a short time interval;</li>
-							<li>Close the clamp by turning off its solenoid and turn off the TEAR_2 solenoid; ????</li>
+							<li>Close the clamp by turning off its solenoid and turn off the TEAR_2 solenoid (i.e., the clamp is in the tear position);li>
 							<li>Go back up to the resting position;</li>
-							<li>Turn off the TEAR_1 solenoid. ????</li>
-							<li></li>
-						</ul>
+							<li>Turn off the TEAR_1 solenoid (i.e, the clamp goes back to the reset position).</li>
+						</ol>
 					</p>
 
 				</section>
