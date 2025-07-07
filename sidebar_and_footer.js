@@ -38,6 +38,7 @@ document.write('\
 							<li><a href="LCD_and_RAM.html">LCD and external RAM</a></li>\
 						</ul>\
 					</li>\
+					<li><a href="closing_remarks.html">Closing remarks</a></li>\
 					<li><a href="downloads.html">Downloads</a></li>\
 					<!--\
 					<li>\

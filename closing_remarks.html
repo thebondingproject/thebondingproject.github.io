@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+
+<head>
+
+	<title>The Bonding Project</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+
+				<!-- Header -->
+				<script src="header.js"></script>
+
+				<!-- Content -->
+				<section>
+					<header class="main">
+						<h1>Closing remarks</h1>
+					</header>
+
+					<h2>Results and future work</h2>
+					<p>
+						In this website we've gone through the development of various parts of the bonding machine.
+						<ol>
+							<li>We started by defining the general master-slave architecture of the machine and we wrote a custom communication
+								protocol suited for our needs (see <a href="system_architecture.html">here</a>);
+							</li>
+							<li>We designed and built the ultrasonic driver PCB to drive the ultrasonic welding element (see <a href="ultrasonic_driver.html">here</a>);</li>
+							<li>We implemented a nested PI controller with trajectory profiling for the 4 motors, achieving reliable and smooth motion. We also designed and built custom PCBs for the controllers (see <a href="motor_control.html">here</a>);</li>
+							<li>We implemented another PI controller to control the heating stage (see <a href="heating_stage.html">here</a>);</li>
+							<li>We built a custom microscope with a CMOS camera to be able to accurately position the machine head on the substrate (see <a href="camera_and_optics.html">here</a>);</li>
+							<li>We built a modular power supply (24V, 12V, 5V, 3.3V) by cascading multiple buck converters (see <a href="power_supply.html">here</a>)</li>
+							<li>By manually assisting the machine, we were able to perform a first bond test (see <a href="making_the_first_bond.html">here</a>);</li>
+							<li>We almost fully automatized the bonding procedure (head descent and raise, ultrasonic driver activation, solenoid actuation) and successfully managed to bond a test substrate (see <a href="proper_bond.html">here</a>);</li>
+						</ol>
+						We are very satisfied with the results we achieved. However, there are a few things we need to implement and refine.
+						<ol>
+							<li>We want to display the camera output onto a LCD screen, and we also want to be able to control the machine through a touchscreen. We're
+								currently stuck as we haven't been able to reliably connect the external RAM to the MCU due to crosstalk and other 
+								parasitic effects caused by long interconnections (see <a href="LCD_and_RAM.html">here</a>);</li>
+							<li>We haven't yet designed a custom PCB for the MCU as its design is not yet finalized. Unforeseen changes requiring PCB redesign might 
+								appear during development, and we can't afford to make many test PCBs. We need to nail it on the first try (see <a href="master_board.html">here</a>).</li>
+						</ol>
+					</p>
+
+					<hr class="major" />
+					<h2>Before and after</h2>
+					<p>
+						We now report a small before/after image gallery so you can compare the state of the project before and after the making
+						of this lab activity.
+
+						
+						<div class="box alt">
+							<div class="row aln-center">
+								<div class="col-6"><span class="image fit"><img
+											src="media/placeholder" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img
+											src="media/placeholder" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img
+											src="media/placeholder" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img
+											src="media/placeholder" alt="" /></span></div>
+							</div>
+						</div>
+					</p>
+
+				</section>
+			</div>
+		</div>
+
+		<!-- Sidebar and Footer -->
+		<script src="sidebar_and_footer.js"></script>
+	</div>
+
+	<!-- Scripts -->
+	<script src="js_scripts.js"></script>
+</body>
+
+</html>
