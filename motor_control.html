@@ -43,7 +43,7 @@
 					<h2 id="pi_controller">PI controller</h2>
 					<h4>PI controller: current, speed, position nested loops</h4>
 					<p>
-						We followed a technical guide by a Texas Instruments employee to implement the motor controller. A PDF print of the original
+						To implement the motor controller we followed a technical guide made by a Texas Instruments employee. A PDF print of the original
 						article can be found in the <a href="downloads.html#motor_control">downloads area</a> of this website.  
 						<br><br>
 						The complete control model is composed of three nested loops (position, speed, current). You can see the 
@@ -54,8 +54,8 @@
 							<li>The user chooses a target position;</li>
 							<li>The position loop generates a target speed to reach the target position;</li>
 							<li>The speed loop generates a target current to reach the target speed;</li>
-							<li>The current loop modulates the current in the motor and moves it;</li>
-							<li>Position, speed and current are always fed back to the respective control loops.</li>
+							<li>The current loop modulates the current in the motor and moves it forwards or backwards depending on the sign of the current;</li>
+							<li>Position, speed and current are continuously fed back to the respective control loops.</li>
 						</ul>
 						We will now analyze each of the blocks to better understand their role and functioning.
 					</p>
@@ -65,15 +65,9 @@
 						A generic PI controller can be modeled with the block scheme on the bottom-left. Its transfer function is
 						<div class="align-center">\(PI(s) = \frac{K_a K_b}{s} + K_a  = \frac{K_a K_b \left( 1 + \frac{s}{K_b} \right)}{s} \)</div>
 						<br>
-						We now wish to implement a current control loop to control the movement of a motor. We take the generic PI controller scheme and
-						connect a simple motor model to its output. The result is shown in the image on the bottom-right.
+						We wish to implement a current control loop to control the movement of a motor. To do this, we first take the generic PI controller scheme and
+						connect the model of a DC motor to its output. The result is shown in the image on the bottom-right.
 						<br>
-						This current control loop operates in the following way:
-						<ul>
-							<li>It receives the target current from a previous block;</li>
-							<li>It actuates a change in the current to reach the target;</li>
-							<li>The actual current flowing in the motor windings is measured and brought back into the input of the feedback loop.</li>
-						</ul>
 						
 						<div class="box alt">
 						<div class="row aln-center">
@@ -84,6 +78,14 @@
 										src="media/motor_driver/pi_controller_with_output_attached.jpg" alt="" /></span></div>
 						</div>
 						</div>
+						
+						This current control loop operates in the following way:
+						<ul>
+							<li>It receives the target current from a previous block;</li>
+							<li>It actuates a change in the current to reach the target;</li>
+							<li>The actual current flowing in the motor windings is measured and brought back into the input of the feedback loop.</li>
+						</ul>
+
 						The closed-loop transfer function of the system is
  						<div class="align-center">\(G(s) = \frac{G_{loop}}{1+G_{loop}} \)</div>
 						where
@@ -96,7 +98,7 @@
 						We aim to control the motor with smooth accelerations and decelerations, avoiding overshoots and oscillations. To achieve the performance
 						we desire we need to perform zero-pole cancellation on the \(G(s)\) loop transfer function reported above.
 						<br><br>
-						It can be shown (see attached files) that the optimal values of \(K_a\) and \(K_b\) to have zero-pole cancellation are:
+						It can be shown (see "Wilson - Teaching Your PI Controller to Behave (Part III)" in the <a href="downloads.html#motor_control">attached files</a>) that the optimal values of \(K_a\) and \(K_b\) to have zero-pole cancellation are:
 						<ul>
 							<li>\(K_b = \frac{R}{L}\)</li>
 							<li>\(K_b = L \cdot BW\) where \(BW=2 \pi f\) is the bandwidth of the system</li>
@@ -135,21 +137,22 @@
 						The low pass filter has the following transfer function:
 						<div class="align-center">\(LPF(s) = \frac{1}{1+ \tau s}\)</div>
 						<br><br>
-						Now, by imposing that (\lambda_r=0\) (i.e., the viscous friction is negligible) we can write the complete open loop
+						Now, by imposing that \(\lambda_r=0\) (i.e., the viscous friction is negligible) we can write the complete open loop
 						transfer function as
 						<div class="align-center">\(GH(s) =  \frac{K_c K_d \left( 1 + \frac{s}{K_b} \right)}{s} \frac{1}{1 + \frac{L}{K_a}} \left( \frac{3}{4}P \lambda_r \right) \frac{1}{J s} \frac{1}{1+ \tau s} \) </div>
 						where each of the terms is, in order:
 						<ul>
-							<li>Velocity PI (note that there are two constants we need to determine, namely \(K_c\) and \(K_d\));</li>
-							<li>Current loop;</li>
-							<li>Motor;</li>
-							<li>Load;</li>
-							<li>Low pass filter.</li>
+							<li>Velocity PI (note that there are two constants we need to determine, namely \(K_c\) and \(K_d\) which are the proportional and integral gains of the speed PI control loop);</li>
+							<li>Closed loop current controller transfer function;</li>
+							<li>Motor model transfer function;</li>
+							<li>Load model transfer function;</li>
+							<li>Speed measurement low pass filter.</li>
 						</ul>
 						Finally, the \( GH(s) \) above can be rewritten as
 						<div class="align-center">\( GH(s) = \frac{K K_c K_d \left( 1 + \frac{s}{K_d} \right)}{s^2 \left( 1 + \frac{L}{K_a} s \right) \left( 1+ \tau s \right)} \)</div>
-						where the term \(K = \frac{3P \lambda_r}{4 J}\) contains all the motor and load parameters. This equivalent form
-						will be used below to find the correct values of \(K_c\) and \(K_d\).
+						where the term \(K = \frac{3P \lambda_r}{4 J}\) contains all the motor and load parameters
+						(again, refer to the <a href="motor_control.html#motor_model">motor model</a> section below for their measurement).
+						This equivalent form will be used below to find the correct values of \(K_c\) and \(K_d\). 
 					</p>
 					<h4>Choosing the parameters of the speed loop</h4>
 					<p>
@@ -161,7 +164,8 @@
 						because the pole of the low pass filter dominates the system, as it resides at a much lower frequency
 						compared to the pole of the current controller.
 						<br>
-						By using the concept of maximum phase margin, it can be shown (see attached files) that the optimal values of \(K_c\) and \(K_d\) are:
+						By using the concept of maximum phase margin, it can be shown (see "Wilson - Teaching Your PI Controller to Behave (Part IV)" in the <a href="downloads.html#motor_control">attached files</a>)
+						that the optimal values of \(K_c\) and \(K_d\) are:
 						<ul>
 							<li>\(K_c = \frac{1}{\delta K \tau} \)</li>
 							<li>\(K_d	 = \frac{1}{\delta^2 \tau} \)</li>
@@ -175,7 +179,8 @@
 						To build the Simulink motor model we followed the technical guide "Deriving State Equations for a DC Servo Motor" 
 						that you can find in the <a href="downloads.html#motor_control">downloads area</a>. The block model (top-right) is derived
 						from the differential equations of the equivalent motor-load electrical scheme (top-left). We decided not to report
-						the complete derivation procedure here as it's simply a matter of converting the  
+						the complete derivation procedure here as it's simply a matter of converting the time domain electrical differential equations
+						into the frequency domain using the Laplace transform.
 						<br><br>
 						We report the Simulink model of the motor and load system in the image below (bottom). The \(cos\) and \(6\) blocks on the 
 						lower part of the image model the load; remember that the load is a slider-crank mechanism as we have seen in the 
@@ -204,13 +209,13 @@
 							</li>
 							<li>Measuring \(\lambda_r\): we now release the motor shaft and we directly connect the supply to it. To perform
 								this measurement we need to let the motor rev up to a constant speed. By observing the reference image we can write
-								\(V_a = I_a R_a + K_b \omega \), where \(K_b\) is the EMF constant. It can be shown (see this technical lecture
+								\(V_a = I_a R_a + \omega K_b  \), where \(K_b\) is the EMF constant. It can be shown (see this technical lecture
 								by Texas Instruments on <a href="https://www.youtube.com/watch?v=fpTvZlnrsP0&t=2623s">youtube</a> at the 43:43 timestamp)
 								that the EMF constant is actually equal to the rotor flux, therefore \(K_b = \lambda_r\).
 								<br>
 								Therefore, by inverting the equation we obtain \(\lambda_r = K_b = \frac{V_a - I_a R_a }{\omega}\);
 							</li>
-							<li>Measuring \(\J\): in the previous point we can also measure the viscous friction coefficient \(B = \frac{K_b I_a}{\omega}\)
+							<li>Measuring \(J\): in the previous point we can also measure the viscous friction coefficient \(B = \frac{K_b I_a}{\omega}\)
 								which we need to measure the system moment of inertia. The idea is the following: connect the supply to the motor,
 								wait for it to reach full speed, disconnect the supply and measure the time \(\tau_m\) it takes for the motor to stop.
 								We know that \(\tau_m = \frac{J}{B}\), and therefore the moment of inertia can be easily determined as \(J = B \tau_m\).
@@ -220,12 +225,12 @@
 
 					<h4>Loop models</h4>
 					<p>
-						You can find images all the PI controllers' Simulink models (current, speed, position) in the following image gallery. We
+						You can find images all the PI controllers' Simulink models (current, speed, position) in the following image gallery; we
 						decided to report them all in the same place as they are essentially all identical. As you can see they are a direct transposition
 						of the scheme we reported at the top of this section. We also modeled saturations of the internal signals of the PI controller
 						in order to simulate the actual implementation of these loops inside the microcontroller.
 						<br> 
-						Finally, you can find the actual Simulink files in the <a href="downloads.html#motor_control">downloads area</a> of this website. 
+						You can find the actual Simulink files in the <a href="downloads.html#motor_control">downloads area</a> of this website. 
 						<ul>
 							<li><b>Top-left</b>: current controller;</li>
 							<li><b>Top-right</b>: speed controller;</li>
@@ -286,6 +291,7 @@
 					
 					<hr class="major" />
 
+					<h2>Driver boards</h2>
 					<h4>From demo boards to a custom PCB</h4>
 					<p>
 					The heart of the driver is a STM32F302R876 microcontroller by ST Microelectronics which controls a BD16912EFV-C
@@ -304,14 +310,13 @@
 					</ul>
 					</p>
 
-					<h2>Drivers boards</h2>
+					<h4>Schematic</h4>
 					<p>
 						The schematic, the PCB layout and the 3D model can be found in the
 						<a href="downloads.html#motor_control">downloads area</a>
 						of this website.
 					</p>
 
-					<h4>Schematic</h4>
 					<span class="image fit"><img src="media/motor_driver/Servo_Motor_Driver_schematic.gif" alt="" /></span>
 
 					<h4>Image gallery</h4>
