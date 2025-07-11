@@ -36,6 +36,8 @@
 						don't provide all the voltages we need. As you will see below, we decided to use a single rail AC/DC converter
 						with a cascade of buck converters to get all the voltages we need.  
 					</p>
+
+					<hr class="major" />
 					
 					<h2>PSU in detail</h2>
 					<h4>Block scheme</h4>
@@ -62,19 +64,81 @@
 						<span class="image fit"><img src="media/power_supply/block_scheme.jpg" alt="" /></span>
 					</p>
 					
-					<h4>Image gallery</h4>
+					<h4>Schematic and PCB</h4>
 					<p>
+						The schematic and the PCB derived from the block scheme are reported below.
+						There are some important points to discuss:
 						<ul>
-							<li><b>Left</b>: power switch and power socket;</li>
-							<li><b>Right</b>: 24V flyback power supply.</li>
+							<li>The 3.3V is absent as the regulator will be mounted on the master board's PCB (see <a href="master_board.html">here</a>).
+								The slave boards are currently powered with the 3.3V rail coming from the NUCLEO-H723ZG we're currently using 
+								as the main brains of the machine;</li>
+							<li>The 12V and 5V are ready-made, low cost buck regulators from China which are usually sold to power 
+								DC motors. It didn't make economical sense to 
+								spend time designing a completely custom power supply as these basic commercial solution are good enough
+								for our application.  </li>
+							<li>We decided to opt for a commercial solution for the 24V flyback PSU as well. These PSUs are usually
+								sold as strip LED drivers and are cheap and commonly available. The PSU we used for our
+								project was actually given us for free because the original owner thought it was broken and wanted
+								to throw it away;</li>
+							<li>The -5V rail is obtained through a bootstrap circuit which uses the switching signal coming from the
+								5V buck regulator. This way we don't have to build a separate clock signal, reducing component count;
+							</li>
+							<li>The PSU PCB also hosts the MOSFETs used to activate the head solenoids (discussed above and
+								<a href="mechanical_description.html">seen here</a>), the lamp and the heating stage's power resistor
+								(see <a href="heating_stage.html">here</a>). </li>
+						</ul>						
+
+						<ul>
+							<li><b>Top-left</b>: PSU schematic;</li>
+							<li><b>Top-right</b>: PCB design;</li>
+							<li><b>Bottom-left</b>: physical PCB realization;</li>
+							<li><b>Bottom-right</b>: mounted PCB.</li>
 						</ul>
 
 						<div class="box alt">
 						<div class="row aln-center">
 							<div class="col-6"><span class="image fit"><img
-										src="media/power_supply/3c2ab7ac-e324-4aa8-a782-52cf648d815a.jpeg" alt="" /></span></div>
+										src="media/placeholder" alt="" /></span></div>
 							<div class="col-6"><span class="image fit"><img
-										src="media/power_supply/351f0182-005f-4403-8477-669e9142a8df.jpeg" alt="" /></span></div>
+										src="media/placeholder" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="media/power_supply/PCB_realization.jpeg" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="media/power_supply/mounted_PSU_PCB.jpg" alt="" /></span></div>
+						</div>
+						</div>
+
+						MANCANO LE FOTO
+					</p>
+
+
+					<hr class="major" />
+
+					<h2>Image gallery</h2>
+					<p>
+						<ul>
+							<li><b>Top-left</b>: power switch and power socket before mounting the 24V flyback;</li>
+							<li><b>Top-right</b>: power switch and power socket after mounting the 24V flyback.</li>
+							<li><b>Middle-left</b>: view of the machine before mounting the 24V flyback;</li>
+							<li><b>Middle-right</b>: view of the machine after mounting the 24V flyback;</li>
+							<li><b>Bottom-left</b>: cable routing detail;</li>
+							<li><b>Bottom-right</b>: testing the PSU voltages.</li>
+						</ul>
+
+						<div class="box alt">
+						<div class="row aln-center">
+							<div class="col-6"><span class="image fit"><img
+										src="media/power_supply/switch_wiring.jpg" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="media/power_supply/switch_wiring_after_24V.jpg" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="media/power_supply/PSU_before_24V.jpg" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="media/power_supply/PSU_cables.jpg" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="media/power_supply/complete_PSU_front_view.jpg" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="media/power_supply/testing_voltages.jpg" alt="" /></span></div>
 						</div>
 					</div>
 					</p>

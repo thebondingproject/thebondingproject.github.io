@@ -81,14 +81,52 @@
 					The supply providing power to the heating element will be switched on and off through a MOSFET
 					controlled by a PWM, while \(\theta_r\) will be measured using a NTC temperature sensor.
 					</p>
+
+					<h4>The PI controller</h4>
+					<p>
+						The heating stage is also driven by a PI controller just like the one shown in the
+						<a href="motor_control.html">motor control</a>. We report the standard PI controller 
+						scheme again down below for ease of discussion.
+
+						<div class="box alt">
+						<div class="row aln-center">
+							<div class="col-6"><span class="image fit"><img
+										src="media/heating_stage/pi_controller_in_general.jpg" alt="" /></span>
+							</div>	
+						</div>
+						</div>
+
+						QUA VA FINITO
+					</p>
+
+
+					<h4>The driver</h4>
+					<p>
+						The heater resistor is driven with a simple a PWM controlled power MOSFET like shown in the figure below.
+						The actual driver circuit is onboard the power supply's PCB as you can
+						see in the <a href="power_supply.html">section</a>.
+						
+						<div class="box alt">
+							<div class="row aln-center">
+								<div class="col-4"><span class="image fit"><img
+											src="media/heating_stage/driver_circuit.jpg" alt="" /></span></div>
+							</div>
+						</div>
+					</p>
+
+					<hr class="major" />
+
+					<h2>Image gallery</h2>
 					<p>
 						The heated bed, the heating element and the temperature sensors are shown in the image cluster
 						below:
 					<ul>
 						<li><b>Top-left</b>: the mounting support for the SMD NTC temperature sensor;</li>
 						<li><b>Top-right</b>: the NTC and its support mounted on the underside of the heated bed;</li>
-						<li><b>Bottom-left</b>: the disassembled heated bed;</li>
-						<li><b>Bottom-right</b>: the assembled heated bed.</li>
+						<li><b>Middle-left</b>: the disassembled heated bed;</li>
+						<li><b>Middle-right</b>: the assembled heated bed.</li>
+						<li><b>Bottom-left</b>: testing the heated bed.</li>
+						<li><b>Bottom-right</b>: state of the lab while testing the heated bed.</li>
 					</ul>
 					<div class="box alt">
 						<div class="row aln-center">
@@ -100,22 +138,12 @@
 										src="media/heating_stage/opened_sandwich.jpeg" alt="" /></span></div>
 							<div class="col-6"><span class="image fit"><img
 										src="media/heating_stage/closed_sandwich.jpeg" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="media/heating_stage/testing_heating_stage.jpg" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="media/heating_stage/state_of_the_lab.jpg" alt="" /></span></div>
 						</div>
 					</div>
-					</p>
-
-					<h4>The driver</h4>
-					<p>
-						The heater resistor will be driven with a simple a PWM controlled power MOSFET shown in the figure below.
-						The driver circuit has not been built yet as it'll be onboard the MCU's PCB
-						(see the <a href="master_board.html">master board</a> circuit).
-						
-						<div class="box alt">
-							<div class="row aln-center">
-								<div class="col-4"><span class="image fit"><img
-											src="media/heating_stage/driver_circuit.jpg" alt="" /></span></div>
-							</div>
-						</div>
 					</p>
 				</section>
 			</div>
