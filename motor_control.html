@@ -248,7 +248,15 @@
 
 					<hr class="major" />
 					
-					<h2>Motion profiling</h2>
+					<h2>Further features</h2>
+					<h4>Anti windup</h4>
+					<p>
+						All three loops also contain an anti-windup for the integrator in order to make the saturation of said integrators
+						harder to reach. This allows for reduced overshoots which are very undesirable when working wich such small
+						scale movements.
+					</p>
+					
+					<h4>Motion profiling</h4>
 					<p>
 						<span class="image right"><img src="media/motor_driver/trapezoidal_profiling.png" alt="" /></span>
 
@@ -288,6 +296,27 @@
 						</div>
 					</p>
 
+
+					<hr class="major" />
+					
+					<h2>Position sensing</h2>
+					<p>
+						The motor position is measured through a AS5147U-HTSM Hall effect sensor (left figure) and a diametrically magnetized
+						SC35 neodymium magnet (right figure). Datasheets of both parts are available in the <a href="downloads.html">downloads area</a>.
+						<br><br>
+						The Hall effect sensor is able to output 1024 PPRs (Pulses Per Rotation) with optional 4x resolution, achieving
+						a maximum of 4096 PPRs. This enhanced resolution is obtained by counting the rising and falling edges of both
+						signals pictured in the image on the left. We decided to use this enhanced resolution mode to achieve maximum precision
+						when reading the motor's position.
+
+						<div class="box alt">
+						<div class="row aln-center">
+							<div class="col-4"><span class="image fit"><img
+										src="media/motor_driver/diagram-of-a-hall-effect-sensor.png" alt="" /></span></div>
+							<div class="col-8"><span class="image fit"><img
+										src="media/motor_driver/three-major-magnetization-directions-for-permanent-magnets.jpg" alt="" /></span></div>
+					</div>
+					</p>
 					
 					<hr class="major" />
 
