@@ -38,9 +38,22 @@
 								<a href="motor_control.html#pi_controller">here</a>). This forced us to control the Z axis by manually by moving
 							the slider-crank mechanism by hand;</li>
 							<li>The solenoids were operated manually;</li>
-							<li>The ultrasonic driver was activated manually.</li>
+							<li>The ultrasonic driver was activated manually;</li>
+							<li>We discovered that the 100 microns aluminum bonding wire we used was too thick to be broken by the machine:
+								the wire slipped inside the clamp, preventing the tear from happening.</li>
 						</ul>
-						In this section we describe how we implemented the proper semi-automatic bonding procedure, i.e.:
+						
+						Before attempting a second bond all of these criticalities were resolved as follows:
+						<ul>
+							<li>The machine is now controlled with physical buttons;</li>
+							<li>A custom PSU to power the machine was built (see <a href="power_supply.html">here</a>);</li>
+							<li>The Z motor was calibrated to allow for precise vertical positioning (see <a href="motor_control.html#pi_controller">this</a> section of the motor control page);</li>
+							<li>The solenoids and the ultrasonic driver are operated automatically by the MCU;</li>
+							<li>The bonding wire was changed from aluminum (100 microns) to gold (25 microns);</li>
+							<li>The heating element was enabled (see <a href="heating_stage.html">here</a>);</li>
+						</ul>
+
+						The proper semi-automatic bonding procedure was implemented as follows:
 						<ol>
 							<li>Pressing a physical button initiates the head descent;</li>
 							<li>The ultrasonic driver is activated automatically, making the first bond;</li>
@@ -48,6 +61,35 @@
 							<li>The machine lowers its head again and activates the ultrasonic driver automatically, making the second bond;</li>
 							<li>The head raises back to its resting position.</li>
 						</ol>
+						
+					</p>
+
+					<hr class="major" />
+
+					<h2>Micrometric scale needle and thread</h2>
+					<p>
+						The change from aluminum (100 microns) to gold wire (25 microns) required also the change of the wedge tool.
+						The wedge tool used for gold is smaller and more delicate compared to the one used for the aluminum wire.
+						<br>
+						Inserting the gold wire inside the wedge tool proved to be a challenge itself. The concept is identical 
+						to inserting a sewing thread into the eye of a sewing needle but, as you can see in the pictures below,
+						with a way smaller and delicate thread. 
+
+						<ul>
+							<li><b>Top-left</b>: sewing thread and sewing needle;</li>
+							<li><b>Top-right</b>: tweezers used to insert the gold wire into the wedge tool with a €1 coin for scale;</li>
+							<li><b>Bottom</b>: front camera view of the gold wire, tweezers, wedge tool and clamp;</li>
+						</ul>
+						<div class="box alt">
+							<div class="row aln-center">
+								<div class="col-4"><span class="image fit"><img
+											src="media/proper_bond/needle_and_thread.jpg" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img
+											src="media/proper_bond/tweezers_and_euro.jpg" alt="" /></span></div>
+								<div class="col-10"><span class="image fit"><img
+											src="media/proper_bond/microscope_wire_tweezers_clamp.jpg" alt="" /></span></div>
+							</div>
+						</div>
 					</p>
 
 					<hr class="major" />
@@ -62,8 +104,8 @@
 
 						<ul>
 							<li><b>Top</b>: "K&S 4500 Series - Digital Series Manual - Wire Bonders", p.82;</li>
-							<li><b>Bottom-right</b>: "Model 4123 - Wedge Bonder - Operation And Maintenance Manual", p.79;</li>
-							<li><b>Bottom-left</b>: "Model 4123 - Wedge Bonder - Operation And Maintenance Manual", p.39;</li>
+							<li><b>Bottom-left</b>: "Model 4123 - Wedge Bonder - Operation And Maintenance Manual", p.79;</li>
+							<li><b>Bottom-right</b>: "Model 4123 - Wedge Bonder - Operation And Maintenance Manual", p.39;</li>
 						</ul>
 						<div class="box alt">
 							<div class="row aln-center">

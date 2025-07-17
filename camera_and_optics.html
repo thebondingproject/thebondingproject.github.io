@@ -26,9 +26,7 @@
 						<h1>Camera and optics</h1>
 					</header>
 
-					<h2>Custom CMOS camera microscope</h2>
-
-					<h4>Rationale</h4>
+					<h2>Introduction</h2>
 					<p>
 						To achieve a precision of a few microns when positioning the machine head we can't possibly rely
 						on human vision, which is different from individual to individual and can resolve objects of around
@@ -38,10 +36,20 @@
 						binocular microscope as it can be seen in the <a href="project_overview.html">project overview</a>,
 						but unfortunately it wasn't included along with the machine head we bought.	This meant we had to
 						build our own from scratch.
+						<br><br>
+						We actually equipped the machine with two cameras:
+						<ul>
+							<li>A custom CMOS microscope mounted on the top: this will be used to implement the full automatic bonding procedure,
+							which hasn't yet been implemented (see <a href="closing_remarks.html#future_work">here</a> for further details);</li>
+							<li>A commercial microscope lens mounted on the front: this is used to perform the manual bond procedure, as it can be seen
+								<a href="proper_bond.html">here</a>. This camera is also helpful when loading the 25 micron gold wire spool into the 
+								wedge tool.
+							</li>
+							
+						</ul>
 					</p>
 
-					<h4>Our design</h4>
-					
+					<h4>Custom CMOS camera microscope</h4>
 					<p>
 						A basic microscope was created by positioning a suitable optical lens and a CMOS camera at the opposite
 						ends of a metal extension tube as it can be seen in the picture below. This is the same approach that
@@ -88,6 +96,38 @@
 						By counting the divisions we can see that the actual field of view matches the calculations above.
 					</p>
 					
+					<hr class="major" />
+
+					<h2>Front camera module</h2>
+					<p>
+						Along with the microscope camera, the bonding machine is equipped with a frontal microscope camera
+						(with significant less magnification compared to the camera mounted on the extension tube discussed above) 
+						which is used to monitor the operating area of the machine. This allows us to roughly align the head
+						above the substrate and check that the bond is being formed correctly. The camera module is 
+						manufactured by Hayear and can be found on <a href="https://www.hayear.com/?product/189">their website</a>.
+						found on 
+						<br>
+						A small image gallery is reported below.
+						<ul>
+							<li><b>Top-left</b>: front camera;</li>
+							<li><b>Top-right</b>: front camera;</li>
+							<li><b>Bottom</b>: camera stream viewed from a PC.</li>
+						</ul>
+
+						<div class="box alt">
+							<div class="row aln-center">
+								<div class="col-6"><span class="image fit"><img
+									src="media/camera_and_optics/front_camera.jpeg" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img
+									src="media/camera_and_optics/front_camera_side_view.jpeg" alt="" /></span></div>
+								<div class="col-10"><span class="image fit"><img
+									src="media/camera_and_optics/front_camera_object_view.jpeg" alt="" /></span></div>
+
+							</div>
+						</div>
+						
+					</p>
+
 					<hr class="major" />
 					
 					<h2>Future work</h2>
