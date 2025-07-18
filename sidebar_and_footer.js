@@ -28,14 +28,14 @@ document.write('\
 						<span class="opener">Bonding experiments</span>\
 						<ul>\
 							<li><a href="making_the_first_bond.html">Making the first bond</a></li>\
-							<li><a href="proper_bond.html">Bonding the proper way</a></li>\
+							<li><a href="bonding_the_proper_way.html">Bonding the proper way</a></li>\
 						</ul>\
 					</li>\
 					<li>\
 						<span class="opener">WIP and future work</span>\
 						<ul>\
-							<li><a href="master_board.html">Master board</a></li>\
 							<li><a href="LCD_and_RAM.html">LCD and external RAM</a></li>\
+							<li><a href="master_board.html">Master board</a></li>\
 						</ul>\
 					</li>\
 					<li><a href="closing_remarks.html">Closing remarks</a></li>\

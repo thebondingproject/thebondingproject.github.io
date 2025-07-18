@@ -46,17 +46,28 @@
 
 					<hr class="major" />
 					
-					<h2>Drivers in detail</h2>
+					<h2>Current state</h2>
 					<p>
-						The schematic, the PCB layout and the 3D model can be found in the
-						<a href="downloads.html#master_board">downloads area</a>
-						of this website.
+						<span class="image right"><img src="media/master_board/mounted_nucleo.jpeg" alt="" /></span>
+
+						As you might have already noticed in some previous sections (the <a href="making_the_first_bond.html">first</a> and 
+						<a href="bonding_the_proper_way.html">second</a> bonding experiments, the <a href="power_supply.html">power supply</a>
+						and the <a href="LCD_and_RAM.html">LCD</a>), we are using a Nucleo-H723ZG as the brain of the machine
+						instead of a custom PCB.
+						This is mainly because we haven't yet decided on what external RAM technology to use.
+						<br><br>
+						Unfortunately, we cannot test the various external RAM technologies due to interconnection parasitic effects as it 
+						was shown <a href="LCD_and_RAM.html">here</a>. We have to design the complete PCB first, and only then we will be able
+						to check if the RAM is working as intended or not. In order to keep development costs down, we decided to not
+						build the final PCB until we were absolutely sure about every single design aspect regarding the MCU.
+						<br><br>
+						We decided to use a Nucleo-H723ZG as it uses the 
+						same microcontroller that we want to deploy on the final PCB, namely the STM32H723ZGT6 whose datasheet can be
+						found in the <a href="downloads.html">downloads area</a>. We have temporarily mounted the Nucleo-H723ZG
+						on the machine's electronics panel as shown in the image on the right to make the assembly tidier; the Nucleo
+						will be eventually replaced by the final PCB when it will be realized.
+
 					</p>
-
-					<h4>Schematic</h4>
-
-					<h4>Image gallery</h4>
-		
 				</section>
 			</div>
 		</div>
