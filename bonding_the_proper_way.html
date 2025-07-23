@@ -76,18 +76,21 @@
 						with a way smaller and delicate thread. 
 
 						<ul>
-							<li><b>Top-left</b>: sewing thread and sewing needle;</li>
+							<li><b>Top-left</b>: inserting the gold wire by hand;</li>
 							<li><b>Top-right</b>: tweezers used to insert the gold wire into the wedge tool with a €1 coin for scale;</li>
-							<li><b>Bottom</b>: front camera view of the gold wire, tweezers, wedge tool and clamp;</li>
+							<li><b>Middle</b>: front camera view of the gold wire, tweezers, wedge tool and clamp;</li>
+							<li><b>Bottom</b>: front camera view of the partly disassembled clamp for easier access to the wedge tool.</li>
 						</ul>
 						<div class="box alt">
 							<div class="row aln-center">
-								<div class="col-4"><span class="image fit"><img
-											src="media/bonding_the_proper_way/needle_and_thread.jpg" alt="" /></span></div>
+								<div class="col-5"><span class="image fit"><img
+											src="media/bonding_the_proper_way/inserting_gold_wire.jpg" alt="" /></span></div>
 								<div class="col-6"><span class="image fit"><img
 											src="media/bonding_the_proper_way/tweezers_and_euro.jpg" alt="" /></span></div>
 								<div class="col-10"><span class="image fit"><img
 											src="media/bonding_the_proper_way/microscope_wire_tweezers_clamp.jpg" alt="" /></span></div>
+								<div class="col-10"><span class="image fit"><img
+											src="media/bonding_the_proper_way/microscope_opened_clamp.jpg" alt="" /></span></div>
 							</div>
 						</div>
 					</p>
@@ -150,21 +153,39 @@
 						<ol>
 							<li>Wait for the button press to start the bonding procedure;</li>
 							<li>When the button is pressed, lower the head to the <i>first search height</i> (i.e., the head hangs a few mm above the substrate);</li>
+							<li>Let the user move the XY platter freely;</li>
 							<li>When the button is pressed again, lower the head until the substrate is touched. Then, lower the head a few microns more to exert a little pressure on the substrate;</li>
-							<li>Perform the bond by activating the ultrasonic driver for a short time interval;</li>
 							<li>Open the clamp by turning on its solenoid;</li>
+							<li>Perform the bond by activating the ultrasonic driver for a short time interval;</li>
 							<li>Raise the head to the <i>bond height</i> position (this parameter sets the height of the loop of wire constituting the bond);</li>
 							<li>Let the user move the XY platter freely;</li>
 							<li>When the button is pressed, lower the head to the <i>second search height</i> (which is in general different from the <i>first search height</i>);</li>
+							<li>Let the user move the XY platter freely;</li>
 							<li>When the button is pressed again, lower the head until the substrate is touched. Then, lower the head a few microns more to exert a little pressure on the substrate;</li>
 							<li>Turn on the TEAR_1 and TEAR_2 solenoids (i.e., the clamp is in the feed position);</li>
-							<li>Perform the bond by activating the ultrasonic driver for a short time interval;</li>
 							<li>Close the clamp by turning off its solenoid and turn off the TEAR_2 solenoid (i.e., the clamp is in the tear position);</li>
 							<li>Go back up to the resting position;</li>
 							<li>Turn off the TEAR_1 solenoid (i.e, the clamp goes back to the reset position).</li>
 						</ol>
 					</p>
 
+					<h2>Videos</h2>
+					<h4>Head rotation</h4>
+					<p>	
+						Before diving in the actual bond procedure, we wanted to showcase the θ movement which we haven't yet shown before.
+						<br><br>
+						<span class="image fit"><video controls width="100%">
+							<source src="media/bonding_the_proper_way/head_rotation.mp4" type="video/mp4"></video></span>
+					</p>
+					<h4>Bond procedure, eternal view</h4>
+					<p>	
+						A video of the external view (i.e., not through the microscope lens) of the bond procedure is shown below.
+						The procedure follows the steps described in the section above.
+						<br><br>
+						<span class="image fit"><video controls width="100%">
+							<source src="media/bonding_the_proper_way/bond_procedure_external_view.mp4" type="video/mp4"></video></span>
+					</p>
+					
 				</section>
 			</div>
 		</div>
