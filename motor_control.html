@@ -43,11 +43,13 @@
 					<h2 id="pi_controller">PI controller</h2>
 					<h4>PI controller: current, speed, position nested loops</h4>
 					<p>
-						To implement the motor controller we followed a technical guide made by a Texas Instruments employee. A PDF print of the original
+						To implement the motor controller we followed a technical guide made by a Texas Instruments employee, namely
+						"Wilson - Teaching Your PI Controller to Behave (Part II)". A PDF print of the original
 						article can be found in the <a href="downloads.html#motor_control">downloads area</a> of this website.  
 						<br><br>
 						The complete control model is composed of three nested loops (position, speed, current). You can see the 
 						three nested loops of the complete simulated system in the image below.
+						<br><br>
 						<span class="image fit"><img src="media/motor_driver/Servvo_block_diagram.PNG" alt="" /></span>
 						The modus operandi is the following:
 						<ul>
@@ -63,11 +65,11 @@
 					<h4>Current PI controller</h4>
 					<p>
 						A generic PI controller can be modeled with the block scheme on the bottom-left. Its transfer function is
-						<div class="align-center">\(PI(s) = \frac{K_a K_b}{s} + K_a  = \frac{K_a K_b \left( 1 + \frac{s}{K_b} \right)}{s} \)</div>
+						<div class="align-center">\(PI(s) = \frac{K_a K_b}{s} + K_a  = \frac{K_a K_b \left( 1 + \frac{s}{K_b} \right)}{s} \).</div>
 						<br>
 						We wish to implement a current control loop to control the movement of a motor. To do this, we first take the generic PI controller scheme and
 						connect the model of a DC motor to its output. The result is shown in the image on the bottom-right.
-						<br>
+						<br><br>
 						
 						<div class="box alt">
 						<div class="row aln-center">
@@ -89,9 +91,9 @@
 						The closed-loop transfer function of the system is
  						<div class="align-center">\(G(s) = \frac{G_{loop}}{1+G_{loop}} \)</div>
 						where
- 						<div class="align-center">\(G_{loop}(s) = \frac{G_{loop}}{1+G_{loop}} = \frac{K_a K_b \left( 1 + \frac{s}{K_b} \right)}{s}  \frac{\frac{1}{R}}{1+\frac{L}{R}s} \)</div>
+ 						<div class="align-center">\(G_{loop}(s) = \frac{G_{loop}}{1+G_{loop}} = \frac{K_a K_b \left( 1 + \frac{s}{K_b} \right)}{s}  \frac{\frac{1}{R}}{1+\frac{L}{R}s} \).</div>
 						Now, by rearranging the terms we obtain
-						<div class="align-center">\(G(s) = \frac{1+\frac{s}{K_b}}{\left( 1 + \frac{R}{K_a K_b} s\right) \left( 1 + \frac{s}{K_b} \right) } \)</div>
+						<div class="align-center">\(G(s) = \frac{1+\frac{s}{K_b}}{\left( 1 + \frac{R}{K_a K_b} s\right) \left( 1 + \frac{s}{K_b} \right)}\).</div>
 					</p>
 					<h4>Choosing the parameters of the current loop</h4>
 					<p>
@@ -103,11 +105,11 @@
 							<li>\(K_b = \frac{R}{L}\)</li>
 							<li>\(K_b = L \cdot BW\) where \(BW=2 \pi f\) is the bandwidth of the system</li>
 						</ul>
-						<br>
 						\(L\) and \(R\) were measured by following the method reported in the <a href="motor_control.html#motor_model">motor model</a> section below.
+						<br>
 						The system bandwidth is a degree of freedom we have to choose: more bandwidth means faster movement,
-						but the system becomes more susceptible to noise. We empirically chose a bandwidth of 1kHz as the system
-						behaved properly at that frequency. 
+						but the system becomes more susceptible to noise. We empirically chose a bandwidth of 1kHz as the performance
+						of the system was satisfactory at that frequency. 
 					</p>
 					
 					<h4>Speed loop PI controller</h4>
@@ -124,9 +126,10 @@
 						We measured \(J\) and \(P\) using a method reported in the <a href="motor_control.html#motor_model">motor model</a> section below.
 						<br><br>
 						The complete speed loop is shown in the image below.
+						<br><br>
 						<div class="box alt">
 						<div class="row aln-center">
-							<div class="col-8"><span class="image fit"><img
+							<div class="col-9"><span class="image fit"><img
 										src="media/motor_driver/pi_controller_speed.jpg" alt="" /></span></div>
 						</div>
 						</div>
@@ -135,8 +138,7 @@
 						unpredictable movement.
 						<br>
 						The low pass filter has the following transfer function:
-						<div class="align-center">\(LPF(s) = \frac{1}{1+ \tau s}\)</div>
-						<br><br>
+						<div class="align-center">\(LPF(s) = \frac{1}{1+ \tau s}\).</div>
 						Now, by imposing that \(\lambda_r=0\) (i.e., the viscous friction is negligible) we can write the complete open loop
 						transfer function as
 						<div class="align-center">\(GH(s) =  \frac{K_c K_d \left( 1 + \frac{s}{K_b} \right)}{s} \frac{1}{1 + \frac{L}{K_a}} \left( \frac{3}{4}P \lambda_r \right) \frac{1}{J s} \frac{1}{1+ \tau s} \) </div>
@@ -184,7 +186,7 @@
 						<br><br>
 						We report the Simulink model of the motor and load system in the image below (bottom). The \(cos\) and \(6\) blocks on the 
 						lower part of the image model the load; remember that the load is a slider-crank mechanism as we have seen in the 
-						<a href="downloads.html#mechanical_description">mechanical description</a> section.
+						<a href="mechanical_description.html">mechanical description</a> section.
 
 						<div class="box alt">
 						<div class="row aln-center">
@@ -201,11 +203,12 @@
 						that you can find in the <a href="downloads.html#motor_control">downloads area</a>. Refer to the image above on the top-left for the
 						following discussion.
 						<ul>
-							<li>Measuring \(R_a\): by locking the motor shaft the back EMF \(V_b(t)\) is zero. By imposing a voltage at the input \(V_a(t)\)
-								(for example 5V) and measuring the current \(i_a(t)\) we can calculate the coil resistance as \(R_a = \frac{V_a}{i_a}\);
+							<li>Measuring \(R_a\): by locking the motor shaft we get that the back EMF \(V_b(t)\) is zero. We now impose a voltage at the
+								input \(V_a(t)\) (for example 5V) and we measure the resulting current \(i_a(t)\) we can calculate
+								the coil resistance as \(R_a = \frac{V_a}{i_a}\);
 							</li>
 							<li>Measuring \(L_a\): we keep the motor shaft locked and we calculate the inductance by measuring the time constant of the 
-								equivalent RL circuit with an oscilloscope. We know that \( \tau = \frac{L_a}{R_a}\), therefore \(L_a = \tau R_a \);
+								equivalent RL circuit with an oscilloscope as we know that \( \tau = \frac{L_a}{R_a}\) and therefore \(L_a = \tau R_a \);
 							</li>
 							<li>Measuring \(\lambda_r\): we now release the motor shaft and we directly connect the supply to it. To perform
 								this measurement we need to let the motor rev up to a constant speed. By observing the reference image we can write
@@ -230,18 +233,17 @@
 						of the scheme we reported at the top of this section. We also modeled saturations of the internal signals of the PI controller
 						in order to simulate the actual implementation of these loops inside the microcontroller.
 						<br> 
-						You can find the actual Simulink files in the <a href="downloads.html#motor_control">downloads area</a> of this website. 
+						You can find the Simulink files in the <a href="downloads.html#motor_control">downloads area</a> of this website. 
 						<ul>
 							<li><b>Top-left</b>: current controller;</li>
 							<li><b>Top-right</b>: speed controller;</li>
-							<li><b>Bottom-left</b>: position controller.</li>
+							<li><b>Bottom</b>: position controller.</li>
 						</ul>
 						<div class="box alt">
 						<div class="row aln-center">
 							<div class="col-6"><span class="image fit"><img src="media/motor_driver/Current_PI.PNG" alt="" /></span></div>
 							<div class="col-6"><span class="image fit"><img src="media/motor_driver/Speed_PI.PNG" alt="" /></span></div>
 							<div class="col-6"><span class="image fit"><img src="media/motor_driver/PI_controller.PNG" alt="" /></span></div>
-							<div class="col-6"><span class="image fit"></span></div>
 						</div>
 						</div>
 					</p>
@@ -260,14 +262,14 @@
 					<p>
 						<span class="image right"><img src="media/motor_driver/trapezoidal_profiling.png" alt="" /></span>
 
-						In order to achieve smooth movement on each of the four axes, we decided to implement trapezoidal motor profiling
+						In order to achieve smooth movement on each of the four axes we decided to implement trapezoidal motor profiling
 						by following <a href="https://www.ctrlaltftc.com/advanced/motion-profiling">this article</a> (you can find a 
 						PDF print of this article in the <a href="downloads.html#motor_control">downloads area</a>).
 						<br><br>
-						As you can see on the image on the right, by shaping the velocity target as the trapezoid (orange line), a smooth
+						As you can see on the image on the right, by shaping the velocity target as the trapezoid (orange line), smooth
 						movement can be achieved (blue line): the motor first accelerates, cruises at a constant speed for a while,
 						and then decelerates smoothly when the destination is almost reached.
-						<br>
+						<br><br>
 						The control algorithm for motion profiling operates in the following way:
 						<ul>
 							<li> Setup phase:
@@ -285,7 +287,7 @@
 								</ul>
 							</li>
 						</ul>
-						You can see in the video below that the motor can accelerate and slow down in a controlled manner without jerks.
+						You can see in the video below that the motor can accelerate and slow down in a controlled manner without any jerks.
 						<br><br>
 						
 						<div class="box alt">

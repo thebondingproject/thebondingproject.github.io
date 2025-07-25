@@ -65,9 +65,9 @@
 						<span class="image right"><img src="media/project_overview/SgLabs_HP_8563E_1.JPG"
 								alt="" /></span>
 						The Bonding Project is an initiative born out of necessity. We want an affordable way to repair
-						an HP 8563E Spectrum Analyzer which is in good working condition except for the yttrium iron
-						garnet (YIG) oscillator which has failed due to age. The component is sold as the HP 5086-7906.
-						To be precise, the oscillator is technically working, it’s just that its frequency response is
+						an HP 8563E Spectrum Analyzer which is in good working condition except for the yttrium-iron-garnet
+						(YIG) oscillator which has failed due to age. The component is sold as the HP 5086-7906.
+						To be precise, the oscillator is technically working, but its frequency response is
 						significantly degraded with respect to its specification; as a matter of fact, it works properly
 						when operated in DC. HP was aware of this problem as it put a maximum lifetime on these
 						components of a few hundred hours of operation.
@@ -85,14 +85,14 @@
 						Why don’t we just buy a spare? Spares for vintage precision instruments are scarcely available
 						and sellers ask for premium prices, with listings on Ebay going for almost €900. This is
 						unaffordable for us university students, and the cost of the part cannot be transferred to the
-						University because said spectrum analyzer is owned by a private individual. We figured that we
+						University because we are private individuals. We figured that we
 						could attempt to perform this repair by repurposing the decommissioned head of an old
 						wedge-bonding machine that we acquired for a significantly lower cost. This part was acquired
-						for €293 from an internet seller from the United States, who dismantled the original machine and
+						for €293 from an Ebay seller from the United States, who dismantled the original machine and
 						sold it piece by piece.
 						<br><br>
 						Managing to make this unit functional would enable us to perform this kind of precision repair
-						that no one is normally able to offer. Furthermore, we would use this machine to repair other
+						that only very few people in the world are able to offer. Furthermore, we would use this machine to repair other
 						malfunctioning instruments that we own and that we don’t want to throw away. We want to
 						differentiate ourselves from a world driven by disposable goods and throw away culture.
 						<br><br>
@@ -109,18 +109,23 @@
 					<h4>Buying the machine head</h4>
 					<p>
 						<span class="image right"><img src="media/project_overview/picture-1.jpg" alt="" /></span>
-						The machine from which the head comes from is a Kulicke Soffa 1470. Information is very, very
+						The machine from which the head comes from is a Kulicke-Soffa 1470. Information is very, very
 						scarce: there are some photos of the original machine body on technology surplus websites, but
 						no manuals and no technical information is readily available. We contacted a repair company who
 						listed this machine on their website as part of their fleet, but they didn't respond to our
 						emails. We then contacted a few universities which owned this particular machine; fortunately
 						one of them responded and provided us with scans of a significant part of the original manual.
 						This was sufficient for us to begin the rebuild of the machine.
+						<br>
+						The complete documentation
+						can be found in the <a href="downloads.html#bonding_the_proper_way">downloads area</a> of this website.
 						<br><br>
-						The original machine looks like the one in figure. It’s essentially a finely controlled and
+						The original machine looks like the one in figure on the right. It’s essentially a finely controlled and
 						highly specialized 4-axis robot not too dissimilar in principle from a very expensive
 						3D-printer. We only own the operating head, i.e. the part of the machine that is directly
-						responsible for performing the bond. The frame, the motors, the motor drivers, the control
+						responsible for performing the bond.
+						<br>
+						The frame, the motors, the motor drivers, the control
 						circuitry, the operating manual, the embedded microscope, and so on are missing.
 					</p>
 
@@ -129,12 +134,14 @@
 						There’s a lot of work to be done. To make it functional we must build the following elements
 						from scratch:
 					<ul>
-						<li>DC motor servo drivers;</li>
-						<li>Heater (temperature controller);</li>
-						<li>HMI (Camera, TFT, joystick and buttons);</li>
-						<li>Head solenoids driver;</li>
-						<li>Ultrasonic driver;</li>
-						<li>Elaboration process (bond procedures, pattern recognition).</li>
+						<li><a href="system_architecture.html">System architecture</a>;</li>
+						<li><a href="ultrasonic_driver.html">Ultrasonic driver</a>;</li>
+						<li><a href="motor_control.html">DC motor servo drivers</a>;</li>
+						<li><a href="heating_stage.html">Heater (temperature controller)</a>;</li>
+						<li><a href="power_supply.html">Power supply unit and solenoid drivers</a>;</li>
+						<li><a href="camera_and_optics.html">Microscope and cameras</a>;</li>
+						<li><a href="LCD_and_RAM.html">TFT screen, joystick and buttons</a>;</li>
+						<li>Elaboration process (<a href="bonding_the_proper_way.html">bond procedures</a>, pattern recognition).</li>
 					</ul>
 					</p>
 

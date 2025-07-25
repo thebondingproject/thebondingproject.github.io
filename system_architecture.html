@@ -48,6 +48,7 @@
 					
 					<h4>Top view of the system</h4>
 					In the image below we report the the simplified block scheme of the complete architecture.
+					<br><br>
 					<span class="image fit"><img src="media/system_architecture/block_scheme.png" alt="" /></span>
 
 					<hr class="major" />
@@ -71,42 +72,39 @@
 					<h4>Generic command</h4>
 					<p>
 						A generic command has the following format:
-						<br>
-						<br>
-						<code>0xYY 0xKK 0xZZ 0xUU 0xUU 0xUU 0xUU</code>
-						<br>
-						<br>
+						<div class="align-center"><code>0xYY 0xKK 0xZZ 0xUU 0xUU 0xUU 0xUU</code></div>
 						where:
+						<br><br>
 						<ul>
-							<li><code>0xYY</code> is the command ID;</li>
-							<li><code>0xKK</code> is the length of the message being sent (command ID included);</li>
-							<li><code>0xZZ</code> is available for read/write commands only. It contains the virtual memory address of the data being sent/read;</li>
-							<li><code>0xZZ</code> is available for read/write commands only. It contains the 4 byte read/write payload.</li>
+							<li><code>0xYY</code> <b>ID</b>: the command ID;</li>
+							<li><code>0xKK</code> <b>LEN</b>: length of the message being sent (command ID included);</li>
+							<li><code>0xZZ</code> <b>ADD</b>: available for read/write commands only. It contains the virtual memory address of the data being sent/read;</li>
+							<li><code>0xZZ</code> <b>PAYLOAD</b>: available for read/write commands only. It contains the 4 byte read/write payload.</li>
 						</ul>
 					</p>
 					<h4>Command ID <code>0xYY</code></h4>
 					<p>
 						<ul>
-							<li><code>0x01</code>: ACK</li>
-							<li><code>0x02</code>: NACK</li>
-							<li><code>0x03</code>: START</li>
-							<li><code>0x04</code>: STOP</li>
-							<li><code>0x05</code>: WRITE</li>
-							<li><code>0x06</code>: READ</li>
+							<li><code>0x01</code> <b>ACK</b>: generic acknowledge;</li>
+							<li><code>0x02</code> <b>NACK</b>: generic not acknowledge;</li>
+							<li><code>0x03</code> <b>START</b>: start the motor;</li>
+							<li><code>0x04</code> <b>STOP</b>: stop the motor;</li>
+							<li><code>0x05</code> <b>WRITE</b>: transmit numerical data;</li>
+							<li><code>0x06</code> <b>READ</b>: receive numerical data.</li>
 						</ul>
 					</p>
 					<h4>Virtual memory address<code>0xZZ</code></h4>
-					Numerical data is sent to virtual memory addresses so that the slave knows what to do with the data it has received from the master.
+					Numerical data is sent to virtual memory addresses so that the receiving end (either master or slave) knows what to do with the data.
 					<p>
 						<ul>
-							<li><code>0x00</code>: position</li>
-							<li><code>0x01</code>: speed</li>
-							<li><code>0x02</code>: acceleration</li>
-							<li><code>0x03</code>: measured position</li>
-							<li><code>0x04</code>: measured speed</li>
-							<li><code>0x05</code>: measured current</li>
-							<li><code>0x06</code>: slave control mode (0 for position control, 1 for speed control)</li>
-							<li><code>0x07...0xFF</code>: reserved for future use</li>
+							<li><code>0x00</code> <b>position</b>: setpoint position;</li>
+							<li><code>0x01</code> <b>speed</b>: setpoint speed;</li>
+							<li><code>0x02</code> <b>acceleration</b>: setpoint acceleration;</li>
+							<li><code>0x03</code> <b>measured position</b>: current motor position;</li>
+							<li><code>0x04</code> <b>measured speed</b>: current motor speed;</li>
+							<li><code>0x05</code> <b>measured current</b>: current motor current</li>
+							<li><code>0x06</code> <b>slave control mode</b>: <code>0x00</code> for position control, <code>0x01</code> for speed control</li>
+							<li><code>0x07...0xFF</code> <b>unused</b>: reserved for future use</li>
 						</ul>
 					</p>
 				</section>

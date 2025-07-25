@@ -32,7 +32,7 @@
 						needed to address:
 						<ul>
 							<li>We used a makeshift interface made with the STM32CubeMonitor to control the machine;</li>
-							<li>The PSU had not been made yet, therefore we used three separate bench supplies to power
+							<li>The PSU had not been built yet, therefore we used three separate bench supplies to power
 								all the components externally;</li>
 							<li>The Z motor was not yet calibrated properly (see the motor calibration procedure 
 								<a href="motor_control.html#pi_controller">here</a>). This forced us to control the Z axis by manually by moving
@@ -53,7 +53,7 @@
 							<li>The heating element was enabled (see <a href="heating_stage.html">here</a>);</li>
 						</ul>
 
-						The proper semi-automatic bonding procedure was implemented as follows:
+						Furthermore, the proper semi-automatic bonding procedure was implemented as follows:
 						<ol>
 							<li>Pressing a physical button initiates the head descent;</li>
 							<li>The ultrasonic driver is activated automatically, making the first bond;</li>
@@ -62,6 +62,12 @@
 							<li>The head raises back to its resting position.</li>
 						</ol>
 						
+						Please notice that many, many man-hours were required to go from the <a href="making_the_first_bond.html">first experiment</a>
+						to this one. We worked on the missing features for about two months by accessing the university lab during the summer
+						exam session and also by working from home.
+						<br>
+						We made countless tries before finally being able to performs reliable bonds and we wasted lots of gold wire
+						in the process.
 					</p>
 
 					<hr class="major" />
@@ -103,7 +109,7 @@
 						In order to correctly implement the bonding procedure we used the reference manuals of wedge bonding machines
 						similar to the one we own (remember from the <a href="project_overview.html">project overview</a> that we have
 						a Kulicke Soffa 1470). We report the relevant images in the gallery below. The complete documentation
-						can be found in the <a href="downloads.html#proper_bond">downloads area</a>.
+						can be found in the <a href="downloads.html#bonding_the_proper_way">downloads area</a>.
 
 						<ul>
 							<li><b>Top</b>: "K&S 4500 Series - Digital Series Manual - Wire Bonders", p.82;</li>
@@ -169,7 +175,7 @@
 						</ol>
 					</p>
 
-					<h2>Videos</h2>
+					<h2>Preliminary videos</h2>
 					<h4>Head rotation</h4>
 					<p>	
 						Before diving in the actual bond procedure, we wanted to showcase the θ movement which we haven't yet shown before.
@@ -177,14 +183,18 @@
 						<span class="image fit"><video controls width="100%">
 							<source src="media/bonding_the_proper_way/head_rotation.mp4" type="video/mp4"></video></span>
 					</p>
-					<h4>Bond procedure, eternal view</h4>
+					<h4>Bond procedure, external view</h4>
 					<p>	
 						A video of the external view (i.e., not through the microscope lens) of the bond procedure is shown below.
-						The procedure follows the steps described in the section above.
+						The procedure follows the steps described in the section above. The timings in this video are a bit off as
+						it was taken before we started to fine-tune the various bond parameters.
 						<br><br>
 						<span class="image fit"><video controls width="100%">
 							<source src="media/bonding_the_proper_way/bond_procedure_external_view.mp4" type="video/mp4"></video></span>
 					</p>
+					
+					<h2>The complete bond procedure in detail</h2>
+					<h4></h4>
 					
 				</section>
 			</div>

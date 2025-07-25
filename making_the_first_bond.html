@@ -32,9 +32,14 @@
 						Once we mounted the motor drivers on the frame of the machine (see the <a href="motor_control.html">motor control</a>
 						section) and got the master-slave communication working (see the <a href="system_architecture.html">system architecture</a>
 						section) we were ready to perform the first bond test.
+						<br>
+						Please note that this bond experiment was performed before the <a href="power_supply.html">power supply</a> was built,
+						before the <a href="camera_and_optics.html#front_camera_module_temporary_lcd">front camera</a> was mounted and
+						before the Z motor was <a href="motor_control.html#pi_controller">calibrated properly</a>. It took us two months to implement
+						the missing features shown in the <a href="bonding_the_proper_way.html">second bond experiment</a>.
 						<br><br>
-						The MCU we used was a Nucleo-H723ZG board. The whole setup was powered using three bench power supplies as we haven't yet
-						designed a suitable custom power supply for the whole apparatus. You can see a photo of the setup in the image below.
+						The MCU we used in this experiment was a Nucleo-H723ZG demo board. The whole setup was powered using three
+						bench power supplies as shown in the image below.
 						<br><br>
 						<span class="image fit"><img src="media/first_bond/WhatsApp Image 2025-06-12 at 09.32.58.jpeg" alt="" /></span>
 					</p>
@@ -51,7 +56,7 @@
 						<ul>
 							<li><b>Top-left</b>: control flow on the STM32CubeMonitor software;</li>
 							<li><b>Top-right</b>: machine virtual control panel;</li>
-							<li><b>Bottom-left</b>: machine virtual control panel;</li>
+							<li><b>Bottom</b>: machine virtual control panel;</li>
 						</ul>
 
 						<div class="box alt">
@@ -63,7 +68,6 @@
 								<div class="col-6"><span class="image fit"><img
 											src="media/first_bond/monitor_3.png"
 											alt="" /></span></div>
-								<div class="col-6"><span class="image fit"><img src="" alt="" /></span></div>
 							</div>
 						</div>
 					</p>
@@ -73,7 +77,7 @@
 					<h2>Performing the bond</h2>
 					<h4>The bonding procedure</h4>
 					<p>
-						The bonding procedure was performed by following the following steps:
+						The bonding procedure was performed by following these steps:
 						<ul>
 							<li>Position the bed by manipulating the XY coordinates;</li>
 							<li>Make the head descend by manipulating the Z coordinate;</li>
@@ -87,7 +91,7 @@
 						<br>
 						Furthermore, as the wire we used was made of aluminum, the we didn't need to turn on the
 						heated bed to make the bond. The heated bed is necessary only when performing bonds with
-						gold wire.
+						gold wire (see our second bond experiment <a href="bonding_the_proper_way.html">here</a>).
 						
 					</p>
 					

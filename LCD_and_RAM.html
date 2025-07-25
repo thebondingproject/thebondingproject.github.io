@@ -87,7 +87,7 @@
 						This problem forced us to abandon the SDRAM strategy. We could've tried unorthodox ways to get around it by
 						bypassing the ST IOC configurator and manually remapping pins using configuration text files,
 						but we decided against it as we didn't want to give up the comfort of the IOC graphical interface. As a matter of fact,
-						the IOC doesn't just configure interfaces, but also generates code automatically which helps to save loads of time
+						the IOC doesn't just configure interfaces, but also generates code automatically which helps to save lots of time
 						during development. 
 					</p>
 					<h4>Using HyperRAMs</h4>
@@ -115,7 +115,7 @@
 
 						The problem with this solution is that we haven't yet been able to make it work yet, at least not to an usable degree.
 						We can read configuration registers but we can't access the RAM contents reliably from the Nucleo board.
-						This is most likely because the HyperRAM operates at MHz frequency, and interconnections require matching and proper
+						This is most likely because the HyperRAM operates at MHz frequencies, and interconnections require matching and proper
 						routing. We won't be able to test it properly until we make the final PCB for the MCU, where connections
 						will be designed correctly to avoid reflections and differences in flight times.
 					</p>
@@ -187,7 +187,7 @@
 						Unfortunately, due to the aforementioned RAM problem, we couldn't test the complete interface on our 
 						Nucleo-H723ZG board as the IDE refused to even attempt to load the program onto the microcontroller.
 						We confirmed that the TouchGFX library worked by greatly reducing the screen resolution and loading a very basic
-						GUI (a blue screen with a white dot in the centre).
+						GUI program (a blue screen with a white dot in the centre, not shown here).
 						<br><br>
 						Anyways, we decided to report the current state of the complete GUI in the images below. We will resume
 						work on it as soon as we'll have the external HyperRAM working properly on the custom MCU PCB.
