@@ -29,6 +29,7 @@ document.write('\
 						<ul>\
 							<li><a href="making_the_first_bond.html">Making the first bond</a></li>\
 							<li><a href="bonding_the_proper_way.html">Bonding the proper way</a></li>\
+							<li><a href="final_bond.html">Final bond</a></li>\
 						</ul>\
 					</li>\
 					<li>\
