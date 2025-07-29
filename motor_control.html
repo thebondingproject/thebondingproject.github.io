@@ -133,7 +133,7 @@
 										src="media/motor_driver/pi_controller_speed.jpg" alt="" /></span></div>
 						</div>
 						</div>
-						Note that the low pass filter in the speed feedback loop is necessary because the signal coming from the encoder (which reads the 
+						Notice that the low pass filter in the speed feedback loop is necessary because the signal coming from the encoder (which reads the 
 						motor's position) is usually very noisy: this is a problem, as noise in the feedback loop creates oscillations and
 						unpredictable movement.
 						<br>
@@ -144,7 +144,7 @@
 						<div class="align-center">\(GH(s) =  \frac{K_c K_d \left( 1 + \frac{s}{K_b} \right)}{s} \frac{1}{1 + \frac{L}{K_a}} \left( \frac{3}{4}P \lambda_r \right) \frac{1}{J s} \frac{1}{1+ \tau s} \) </div>
 						where each of the terms is, in order:
 						<ul>
-							<li>Velocity PI (note that there are two constants we need to determine, namely \(K_c\) and \(K_d\) which are the proportional and integral gains of the speed PI control loop);</li>
+							<li>Velocity PI (notice that there are two constants we need to determine, namely \(K_c\) and \(K_d\) which are the proportional and integral gains of the speed PI control loop);</li>
 							<li>Closed loop current controller transfer function;</li>
 							<li>Motor model transfer function;</li>
 							<li>Load model transfer function;</li>

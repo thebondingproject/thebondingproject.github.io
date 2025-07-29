@@ -39,17 +39,76 @@
 						<br><br>
 						We actually equipped the machine with two cameras:
 						<ul>
-							<li>A custom CMOS microscope mounted on the top: this will be used to implement the full automatic bonding procedure,
-							which hasn't yet been implemented (see <a href="closing_remarks.html#future_work">here</a> for further details);</li>
 							<li>A commercial microscope lens mounted on the front: this is used to perform the manual bond procedure, as it can be seen
 								<a href="bonding_the_proper_way.html">here</a>. This camera is also helpful when loading the 25 micron gold wire spool into the 
-								wedge tool.
+								wedge tool;
 							</li>
-							
+							<li>A custom CMOS microscope mounted on the top: this will be used to implement the full automatic bonding procedure,
+							which hasn't yet been implemented (see <a href="closing_remarks.html#future_work">here</a> for further details).</li>
 						</ul>
 					</p>
+					
+					<hr class="major" />
 
-					<h4>Custom CMOS camera microscope</h4>
+					<h2 id="front_camera_module_temporary_lcd">Front camera module and temporary LCD module</h2>
+					<h4>Front camera module</h4>
+					<p>
+						Along with the microscope camera, the bonding machine is equipped with a frontal microscope camera
+						(with significantly less magnification compared to the camera mounted on the extension tube discussed above) 
+						which is used to monitor the operating area of the machine. This allows us to roughly align the head
+						above the substrate and check that the bond is being formed correctly. The camera module is 
+						manufactured by Hayear and can be found on <a href="https://www.hayear.com/?product/189">their website</a>.
+						found on 
+						<br>
+						A small image gallery is reported below.
+						<ul>
+							<li><b>Top-left</b>: front camera;</li>
+							<li><b>Top-right</b>: front camera;</li>
+							<li><b>Bottom</b>: camera stream viewed from a PC during head descent tests. Notice the 25 microns
+							bonding wire mounted in the wedge tool.</li>
+						</ul>
+
+						<div class="box alt">
+							<div class="row aln-center">
+								<div class="col-6"><span class="image fit"><img
+									src="media/camera_and_optics/front_camera.jpeg" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img
+									src="media/camera_and_optics/camera_module.jpeg" alt="" /></span></div>
+								<div class="col-8"><span class="image fit"><video controls width="100%">
+									<source src="media/camera_and_optics/front_camera_view.mp4" type="video/mp4"></video></span></div>
+							</div>
+						</div>
+					</p>					
+					<h4>Temporary LCD module</h4>
+					<p>
+						The microscope camera is viewed through a generic LCD screen with HDMI capabilities, in a very similar
+						fashion to a normal PC monitor.
+
+						<ul>
+							<li><b>Top-left</b>: object onto which perform the bond;</li>
+							<li><b>Top-right</b>: camera screen seen through the screen;</li>
+							<li><b>Bottom-left</b>: monitor mounting point;</li>
+							<li><b>Bottom-right</b>: complete view of the system.</li>
+						</ul>
+
+						<div class="box alt">
+							<div class="row aln-center">
+								<div class="col-6"><span class="image fit"><img
+									src="media/camera_and_optics/object_under_microscope.JPG" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img
+									src="media/camera_and_optics/monitor_view.JPG" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img
+									src="media/camera_and_optics/monitor_mounting.JPG" alt="" /></span></div>
+								<div class="col-6"><span class="image fit"><img
+									src="media/camera_and_optics/complete_view.JPG" alt="" /></span></div>
+							</div>
+						</div>
+					</p>
+					
+					<hr class="major" />
+					
+					<h2>Custom CMOS camera microscope</h2>
+					<h4>Architecture</h4>
 					<p>
 						A basic microscope was created by positioning a suitable optical lens and a CMOS camera at the opposite
 						ends of a metal extension tube as it can be seen in the picture below. This is the same approach that
@@ -91,55 +150,9 @@
 						<br><br>
 						The camera sensor is 3590x2684 microns and the microscope we built (see image above) has a x3.9 magnification.
 						Therefore, the resulting field of view is 920x688 microns. This can be observed in the bottom-right image:
-						Each long line represents a 100 microns division, which is in turn divided in 10 subdivisions of 10 microns each.
+						each long line represents a 100 microns division, which is in turn divided in 10 subdivisions of 10 microns each.
 						<br>
 						By counting the divisions we can see that the actual field of view matches the calculations above.
-					</p>
-					
-					<hr class="major" />
-
-					<h2 id="front_camera_module_temporary_lcd">Front camera module and temporary LCD module</h2>
-					<h4>Front camera module</h4>
-					<p>
-						Along with the microscope camera, the bonding machine is equipped with a frontal microscope camera
-						(with significantly less magnification compared to the camera mounted on the extension tube discussed above) 
-						which is used to monitor the operating area of the machine. This allows us to roughly align the head
-						above the substrate and check that the bond is being formed correctly. The camera module is 
-						manufactured by Hayear and can be found on <a href="https://www.hayear.com/?product/189">their website</a>.
-						found on 
-						<br>
-						A small image gallery is reported below.
-						<ul>
-							<li><b>Top-left</b>: front camera;</li>
-							<li><b>Top-right</b>: front camera;</li>
-							<li><b>Bottom</b>: camera stream viewed from a PC during head descent tests.</li>
-						</ul>
-
-						<div class="box alt">
-							<div class="row aln-center">
-								<div class="col-6"><span class="image fit"><img
-									src="media/camera_and_optics/front_camera.jpeg" alt="" /></span></div>
-								<div class="col-6"><span class="image fit"><img
-									src="media/camera_and_optics/front_camera_side_view.jpeg" alt="" /></span></div>
-								<div class="col-8"><span class="image fit"><video controls width="100%">
-									<source src="media/camera_and_optics/front_camera_view.mp4" type="video/mp4"></video></span></div>
-							</div>
-						</div>
-					</p>					
-					<h4>Temporary LCD module</h4>
-					<p>
-						The microscope camera is viewed through a generic LCD screen with HDMI capabilities, in a very similar
-						fashion to a normal PC monitor.
-
-						<div class="box alt">
-							<div class="row aln-center">
-								<div class="col-6"><span class="image fit"><img
-									src="media/placeholder" alt="" /></span></div>
-								<div class="col-6"><span class="image fit"><img
-									src="media/placeholder" alt="" /></span></div>
-							</div>
-						</div>
-						<br>
 					</p>
 
 					<hr class="major" />
@@ -147,7 +160,7 @@
 					<h2>Future work</h2>
 					<h4>Camera and LCD display</h4>
 					<p>
-						Note that the screen we are currently using is a temporary solution which will be eventually
+						Notice that the screen we are currently using is a temporary solution which will be eventually
 						replaced by another screen.
 						<br>
 						Our goal for the future is to use a touchscreen display controlled by the MCU that can be mounted on

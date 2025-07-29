@@ -47,13 +47,12 @@
 					<hr class="major" />
 					
 					<h2>Current state</h2>
+					<h4>Why are we still using a prototyping Nucleo board?</h4>
 					<p>
-						<span class="image right"><img src="media/master_board/mounted_nucleo.jpeg" alt="" /></span>
-
 						As you might have already noticed in some previous sections (the <a href="making_the_first_bond.html">first</a> and 
 						<a href="bonding_the_proper_way.html">second</a> bonding experiments, the <a href="power_supply.html">power supply</a>
 						and the <a href="LCD_and_RAM.html">LCD</a>), we are using a Nucleo-H723ZG as the brain of the machine
-						instead of a custom PCB.
+						instead of a custom PCB (its datasheet can be downloaded <a href="downloads.html#master_board">here</a>).
 						This is mainly because we haven't yet decided on what external RAM technology to use.
 						<br><br>
 						Unfortunately, we cannot test the various external RAM technologies due to interconnection parasitic effects as it 
@@ -64,9 +63,23 @@
 						We decided to use a Nucleo-H723ZG as it uses the 
 						same microcontroller that we want to deploy on the final PCB, namely the STM32H723ZGT6 whose datasheet can be
 						found in the <a href="downloads.html#master_board">downloads area</a>. We have temporarily mounted the Nucleo-H723ZG
-						on the machine's electronics panel as shown in the image on the right to make the assembly tidier; the Nucleo
+						on the machine's electronics panel as shown in the image below to make the assembly tidier; the Nucleo
 						will be eventually replaced by the final PCB when it will be realized.
-
+					</p>
+					<h4>Image gallery</h4>
+					<p>
+						<ul>
+							<li><b>Left</b>: Nucleo-H723ZG board;</li>
+							<li><b>Right</b>: MCU mounted on the machine's frame and connected to the <a href="motor_control.html">motor controllers</a>.</li>
+						</ul>
+						<div class="box alt">
+						<div class="row aln-center">
+							<div class="col-5"><span class="image fit"><img
+										src="media/master_board/nucleo.jpg" alt="" /></span></div>
+							<div class="col-6"><span class="image fit"><img
+										src="media/master_board/mounted_nucleo.jpeg" alt="" /></span></div>
+						</div>
+						</div>
 					</p>
 
 					<hr class="major" />
